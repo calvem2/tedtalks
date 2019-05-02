@@ -35,6 +35,7 @@ and what they do not.
 * Is there a connection between the number of comments and the view count or rating?
 * Is there a connection between the ratings and the number of positive vs negative buzz words in a talk?
 * Who are the three most popular speakers?
+* Which topics generate the most views?
 
 
 
