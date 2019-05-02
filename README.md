@@ -2,8 +2,12 @@
 
 ## Domain of Interest
 Our group is interested in this domain because Ted Talks have become a cultural icon
-in our time. Ted talks cover a large range of topics and some are more widely viewed
-than others.
+in our time. Ted Talks cover a large range of topics and some are more widely viewed
+than others. We are curious to explore datasets of Ted Talks to determine if it will reveal
+information about society or the times we live in. It is also possible that we
+will not find anything that we can extrapolate to be a reflection of our society
+but rather will simply learn more about what people find interesting or entertaining
+and what they do not.  
 
 
 **Examples of Data Driven Projects:**
