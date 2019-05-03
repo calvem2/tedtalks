@@ -50,7 +50,15 @@ and what they do not.
     + Number of Features (columns): **17**
 
     + Questions that can be answered:
-      + ...
+      + Who are the three most popular speakers?
+      + Which topics generate the most views?
+      + What are the most significant factors in the number of views a Ted Talk receives?
+      + Does the duration of the talk have an effect on total views?
+      + What are the most significant factors in the ratings the talks received?
+      + Does the number of language translations influence the ratings the talks received?
+      + Is there a connection between the number of comments and the view count or rating?
+      + Does the number of language translations influence the view count?
+
 
 2. **transcripts.csv**
     + *Link:* https://www.kaggle.com/rounakbanik/ted-talks?fbclid=IwAR10nJv3I9CvJuDbfcFYDDvIQAxOTv83zEGMoIxjB5d8h7o7J5iPPmAG5Yw#transcripts.csv
@@ -61,15 +69,21 @@ and what they do not.
     + Number of Features (columns): **2**
 
     + Questions that can be answered:
-      + ...
+      + What buzz words appear most often across multiple talks?
+      + Is there a connection between the ratings and the number of positive vs negative buzz words in a talk?
+
 
 3. **Ted_Talks_by_ID_plus-transcripts-and-LIWC-and-MFT-plus-views.csv**
     + *Link:* https://data.world/owentemple/ted-talks-complete-list?fbclid=IwAR0WWitDp6ZslAlDzum7qTS51928E-OdRK_0Hi8DgZLMWG4495XdBFqGj6Q
 
-    + **Description:** This data set looks at all Ted Talks up until June 13th, 2017. It contains similar data to the other datasets, which comes from Ted.com, such as: a video ID, video URL, speaker name, headline, description, film date, event name, talk duration, and publishing date. However, it is unique in that it has topic tags as well as a full English transcript. However, it does not take into account different languages, but instead uses the English transcript and variables from the website [Linguistic [Inquiry and Word Count](http://liwc.wpengine.com/) (LIWC) to determine the count of a specific type of word (eg. Positive). We could use this data similarly, but also decide on what types of messaging creates popular Ted Talks.
+    + **Description:** This dataset is the most comprehensive one in our collection of datasets about TEDTalks. The data comes from Ted.com, and gives information about TEDTalk up until June 13th, 2017, such as: a video ID, video URL, speaker name, headline, description, film date, event name, talk duration, and publishing date. It is unique in that it has topic tags as well as a full English transcript. However, it does not take into account different languages, but instead uses the English transcript and variables from the website [Linguistic [Inquiry and Word Count](http://liwc.wpengine.com/) (LIWC) to determine the count of a specific type of word (eg. Positive). We could use this data similarly, but also decide on what types of messaging creates popular Ted Talks. Since this dataset is so comprehensive, many of our questions could be answered with it. Since it already filtered out specific words and word groups, we can use it as a benchmark for our word analysis with the transcripts.csv dataset.
 
     + Number of Observations (rows): **2475**
     + Number of Features (columns): **123**
 
     + Questions that can be answered:
-      + ...
+      + Which topics generate the most views?
+      + What are the most significant factors in the number of views a Ted Talk receives?
+      + Does the duration of the talk have an effect on total views?
+      + What buzz words appear most often across multiple talks?
+      + Is there a connection between the ratings and the number of positive vs negative buzz words in a talk?
