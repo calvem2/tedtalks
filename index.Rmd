@@ -19,26 +19,22 @@ source("scripts/chart_three.R")
 ```
 
 ## Introduction
-
-
 ***
 
 ## Summary
-
 ***
 
 ## Table
-
 ***
 
 ## Chart One
-
+***
 
 ## Chart Two
-
 ***
 
 ## Ted Talk Ratings
+***
 Viewers have the ability to choose up to three adjectives from a list when they
 rate videos on TED's website. The following chart explores how often users
 choose each adjective when leaving a rating. It also explores the popularity of
@@ -51,7 +47,6 @@ while the least popular was **"Confusing"**. Of the positive ratings,
 frequently than negative ratings. This could be partially due to the fact that
 TED offers less options for negative ratings than positive.
 
-of these adjectives
 ```{r ratings_plot, echo = FALSE, warning = FALSE}
 ratings_plot(ted_main)
 ```
