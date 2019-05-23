@@ -1,25 +1,30 @@
 ---
 title: "Ted Talks"
-author: "Megan Calverley"
+author: "Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"
 date: "5/20/2019"
 output: html_document
 ---
+##Introduction
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Intro Here
 
-## R Markdown
+##Summary Information
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Our data is downloaded from the website Kaggle, but the data origonally came from the [Ted Talks' wbsite](https://www.ted.com/talks). The data contains `r ted_talk_count` videos run from the start of the TED website until September 21st, 2017. Since that time the most viewed video has been `r most_viewed_video` by `r most_viewed_speaker` with `r most_views` total views.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
+```{r George Table}
 summary(cars)
 ```
 
-## Including Plots
+##Plot 1 title here
+
+##Plot 2 title here
+
+##Plot 3 title here
+
+
+
 
 You can also embed plots, for example:
 
