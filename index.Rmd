@@ -1,7 +1,15 @@
 ---
 title: "Ted Talks"
+<<<<<<< HEAD
 author: "Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"
 date: "5/20/2019"
+=======
+author:
+- "Dom Gorecki"
+- "George Prentice"
+- "Sarah Trostle"
+- "Megan Calverley"
+date: "5/25/2019"
 output: html_document
 ---
 ##Introduction
@@ -25,11 +33,46 @@ summary(cars)
 
 
 
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+=======
+```{r setup, include=FALSE}
+ted_main <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
+source("scripts/summary.R")
+source("scripts/table.R")
+source("scripts/chart_one.R")
+source("scripts/chart_two.R")
+source("scripts/chart_three.R")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Introduction
+***
+
+## Summary
+***
+
+## Table
+***
+
+## Chart One
+***
+
+## Chart Two
+***
+>>>>>>> e9af652bf6fb20bf3e9d9e64bdec1373588c2243
+
+## Ted Talk Ratings
+***
+Viewers have the ability to choose up to three adjectives from a list when they
+rate videos on TED's website. The following chart explores how often users
+choose each adjective when leaving a rating. It also explores the popularity of
+'postive' vs. 'negative' adjectives in ratings.
+
+The chart reveals the most popular adjective chosen by users was **"Inspiring"**
+while the least popular was **"Confusing"**. Of the positive ratings,
+**"Jaw-dropping"** was the least popular. Of the negative ratings,
+**"OK"** was the most popular. In general, positive ratings were chosen more
+frequently than negative ratings. This could be partially due to the fact that
+TED offers less options for negative ratings than positive.
+
+```{r ratings_plot, echo = FALSE, warning = FALSE}
+ratings_plot(ted_main)
+```
