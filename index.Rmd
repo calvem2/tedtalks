@@ -4,7 +4,7 @@ author: "Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"
 date: "5/25/2019"
 ---
 
-```{r setup, echo=FALSE}
+```{r setup, echo = FALSE, include = FALSE}
 ted_main <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
 source("scripts/summary.R")
 source("scripts/table.R")
@@ -16,7 +16,7 @@ source("scripts/chart_three.R")
 ##Introduction
 
 Our data is downloaded from the website Kaggle, but the data origonally came
-from [Ted.com](https://www.ted.com/talks) and looks at all the TEDTalks (which started in 1984) up until September 21st, 2017. It contains data such as: the number of comments, a brief description, duration of the talk, where the event took place, the number of languages the talk is in, the film date, the main speaker’s name, the number of speakers, the publishing date, the ratings, the speaker occupation, the number views, and the name of the talk. 
+from [Ted.com](https://www.ted.com/talks) and looks at all the TEDTalks (which started in 1984) published on TED's website as of September 21st, 2017. It contains data such as: the number of comments, a brief description, duration of the talk, where the event took place, the number of languages the talk is in, the film date, the main speaker’s name, the number of speakers, the publishing date, the ratings, the speaker occupation, the number views, and the name of the talk. 
 
 Our group is interested in this domain because Ted Talks have become a cultural icon in our time. Ted Talks cover a large range of topics and some are more widely viewed than others. We are curious to explore datasets of Ted Talks to determine if it will reveal information about society or the times we live in. It is also possible that we will not find anything that we can extrapolate to be a reflection of our society but rather will simply learn more about what people find interesting or entertaining and what they do not.
 
@@ -41,9 +41,10 @@ if there is a relationship between the length of the video and the number of
 views it recieves. Our question of interest was 
 **Do longer or shorter ted talks recieve more views?**
 
-```{r echo = FALSE, warning = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 plot_viewership_duration(ted_main)
 ```
+
 A smoothed line was added to more vividly show any correlations that might be 
 present. The chart shows a few things. First, videos longer than 37 minutes did
 not recieve more than 10,000,000 views which may suggest that very long videos
