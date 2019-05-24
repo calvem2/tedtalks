@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ted Talks Midpoint Deliverable
 # Chart 2: Views by Year
 # Main Contributor: Megan
@@ -39,3 +40,6 @@ views_by_year_plot <- function(ted_talks) {
     theme(plot.title = element_text(hjust = 0.5)) #+
   ggplotly(plot)
 }
+=======
+# Chart Two: 
+>>>>>>> 03f075d69f2eb7112d19ab2533aa3edccb2d9d11
