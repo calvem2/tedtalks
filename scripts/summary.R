@@ -8,20 +8,22 @@ ted_data <- read.csv("data/ted_main.csv", stringsAsFactors = F)
 
 ted_talk_count <- nrow(ted_data)
 
-#Most viewed video and information about that video.
-
+#Most views
 most_views <- ted_data %>%
-  summarise(most_viewed == max(views))
-
-#
-
-most_viewed_video <- ted_data %>%
   select(name, views) %>%
   arrange(-views) %>%
   head(1) %>%
   pull(views)
 
-#speaker name
+#Most viewed video name
+
+most_viewed_video <- ted_data %>%
+  select(name, views) %>%
+  arrange(-views) %>%
+  head(1) %>%
+  pull(name)
+
+#speaker name of most viewed video
 
 most_viewed_speaker <- ted_data %>%
   select(name, main_speaker, views) %>%
@@ -40,8 +42,7 @@ most_videos_speaker <- ted_data %>%
   head(1) %>%
   pull(main_speaker)
 
-
-
+#video count
 most_videos_count <- ted_data %>%
   mutate(count_it = 1) %>%
   group_by(main_speaker) %>%
@@ -50,16 +51,16 @@ most_videos_count <- ted_data %>%
   head(1) %>%
   pull(count_it)
 
+#Most commented video name
+
 most_commented_video <- ted_data %>%
   arrange(-comments) %>%
   head(1) %>%
   pull(name)
 
-most_commented_video <- ted_data %>%
+#number of comments
+
+most_comments <- ted_data %>%
   arrange(-comments) %>%
   head(1) %>%
   pull(comments)
-
-rating_data <- ted_data$ratings
-
-test <- fromJSON(rating_data)

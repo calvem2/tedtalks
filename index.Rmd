@@ -1,40 +1,10 @@
 ---
 title: "Ted Talks"
-<<<<<<< HEAD
 author: "Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"
-date: "5/20/2019"
-=======
-author:
-- "Dom Gorecki"
-- "George Prentice"
-- "Sarah Trostle"
-- "Megan Calverley"
 date: "5/25/2019"
-output: html_document
 ---
-##Introduction
 
-Intro Here
-
-##Summary Information
-
-Our data is downloaded from the website Kaggle, but the data origonally came from the [Ted Talks' wbsite](https://www.ted.com/talks). The data contains `r ted_talk_count` videos run from the start of the TED website until September 21st, 2017. Since that time the most viewed video has been `r most_viewed_video` by `r most_viewed_speaker` with `r most_views` total views.
-
-
-```{r George Table}
-summary(cars)
-```
-
-##Plot 1 title here
-
-##Plot 2 title here
-
-##Plot 3 title here
-
-
-
-=======
-```{r setup, include=FALSE}
+```{r setup, echo=FALSE}
 ted_main <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
 source("scripts/summary.R")
 source("scripts/table.R")
@@ -43,24 +13,40 @@ source("scripts/chart_two.R")
 source("scripts/chart_three.R")
 ```
 
-## Introduction
+##Introduction
+
+Our data is downloaded from the website Kaggle, but the data origonally came
+from [Ted.com](https://www.ted.com/talks) and looks at all the TEDTalks (which started in 1984) up until September 21st, 2017. It contains data such as: the number of comments, a brief description, duration of the talk, where the event took place, the number of languages the talk is in, the film date, the main speaker’s name, the number of speakers, the publishing date, the ratings, the speaker occupation, the number views, and the name of the talk. 
+
+Our group is interested in this domain because Ted Talks have become a cultural icon in our time. Ted Talks cover a large range of topics and some are more widely viewed than others. We are curious to explore datasets of Ted Talks to determine if it will reveal information about society or the times we live in. It is also possible that we will not find anything that we can extrapolate to be a reflection of our society but rather will simply learn more about what people find interesting or entertaining and what they do not.
+
+##Summary Information
 ***
 
-## Summary
-***
 
-## Table
-***
+
+## General Overview
+
+There are a number of metrics that Ted Talks measure to gauge each talk's success. Below is a table of the **top ten** Ted Talks based on view count. In the table you will find the date the talk was filmed, the title with a link to the talk, the speaker's name, the tags associated with the talk, the number of languages that the talk is available in, the number of comments on the video and the number of views. 
+
+```{r data_table, echo=FALSE}
+kable(data_table, "html", col.names = c("Date", "Title", "Speaker", "Tags", "Languages", "Comments", "Views")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) %>% column_spec(1, width = "10em")
+```
 
 ## Chart One
 ***
 
-## Chart Two
+## Distribution of Views by Year
 ***
->>>>>>> e9af652bf6fb20bf3e9d9e64bdec1373588c2243
+
+```{r views_by_year, echo = FALSE, warning = FALSE}
+views_by_year_plot(ted_main)
+```
 
 ## Ted Talk Ratings
 ***
+
 Viewers have the ability to choose up to three adjectives from a list when they
 rate videos on TED's website. The following chart explores how often users
 choose each adjective when leaving a rating. It also explores the popularity of
