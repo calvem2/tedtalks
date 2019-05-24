@@ -11,7 +11,7 @@ library("scales")
 
 # Prepare data to be plotted --------------------------------------------------
 
-# Wrangle necessary data from given ted talks data set
+# Expand ratings column into mulitple columns
 expand_rating_info <- function(ted_talks) {
   ted_talks <- ted_talks %>%
     select(ratings) %>%
@@ -28,10 +28,13 @@ expand_rating_info <- function(ted_talks) {
       into = c("rating_id", "rating_name", "rating_count"),
       sep = ","
     ) %>%
-    mutate(rating_count = strtoi(rating_count))
+    mutate(
+      rating_count = strtoi(rating_count),
+      rating_id = strtoi(rating_id)
+    )
 }
 
-# Gather summary information given ted talk ratings data
+# Gather summary information given expanded ted talk ratings data
 summarize_ratings <- function(rating_info) {
   pos_ratings <- c(
     "Funny", "Courageous", "Beautiful", "Informative",

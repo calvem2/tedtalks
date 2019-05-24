@@ -15,9 +15,10 @@ format_date <- function(ted_talks, format_string) {
   ted_talks <- ted_talks %>%
     mutate(
       published_date = as.POSIXct(as.numeric(as.character(published_date)),
-                                  origin="1970-01-01", tz="GMT")
+        origin = "1970-01-01", tz = "GMT"
+      )
     ) %>%
-    mutate(published_date = format(published_date, format=format_string))
+    mutate(published_date = format(published_date, format = format_string))
 }
 
 # Create plot of Ted Talk Views by Year ---------------------------------------
@@ -26,7 +27,7 @@ format_date <- function(ted_talks, format_string) {
 views_by_year_plot <- function(ted_talks) {
   ted_talks <- format_date(ted_talks, "%Y")
   plot <- ggplot(ted_talks) +
-    geom_boxplot(mapping = aes(x=published_date, y=views)) +
+    geom_boxplot(mapping = aes(x = published_date, y = views)) +
     scale_y_continuous(
       breaks = pretty(ted_talks$views, n = 50),
       labels = comma,
