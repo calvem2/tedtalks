@@ -7,9 +7,7 @@ library("jsonlite")
 library("anytime")
 library("tidyr")
 
-df <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
 
-typeof(df$tags)
 
 create_table <- function(dataframe) {
   # Add markdown to insert a link to the Talk within the title column
@@ -29,4 +27,4 @@ create_table <- function(dataframe) {
   return(sum_table)
 }
 
-data_table <- create_table(df)
+data_table <- create_table(ted_main)
