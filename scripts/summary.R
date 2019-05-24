@@ -4,18 +4,17 @@ library("httr")
 
 ted_data <- read.csv("data/ted_main.csv", stringsAsFactors = F)
 
-# How many Ted Talks were there last year
-
+# How many Ted Talks have their been?
 ted_talk_count <- nrow(ted_data)
 
-#Most views
+#What is the highest count of views?
 most_views <- ted_data %>%
   select(name, views) %>%
   arrange(-views) %>%
   head(1) %>%
   pull(views)
 
-#Most viewed video name
+#What is the name of the video with the most views?
 
 most_viewed_video <- ted_data %>%
   select(name, views) %>%
@@ -23,7 +22,7 @@ most_viewed_video <- ted_data %>%
   head(1) %>%
   pull(name)
 
-#speaker name of most viewed video
+#What is the name of the speaker with the most views?
 
 most_viewed_speaker <- ted_data %>%
   select(name, main_speaker, views) %>%
@@ -42,7 +41,7 @@ most_videos_speaker <- ted_data %>%
   head(1) %>%
   pull(main_speaker)
 
-#video count
+#How many videos did the speaker with the most videos have?
 most_videos_count <- ted_data %>%
   mutate(count_it = 1) %>%
   group_by(main_speaker) %>%
@@ -51,16 +50,22 @@ most_videos_count <- ted_data %>%
   head(1) %>%
   pull(count_it)
 
-#Most commented video name
+#What was the name of the video that had the most comments?
 
 most_commented_video <- ted_data %>%
   arrange(-comments) %>%
   head(1) %>%
   pull(name)
 
-#number of comments
+#What was the highest count of comments on one video?
 
 most_comments <- ted_data %>%
   arrange(-comments) %>%
   head(1) %>%
   pull(comments)
+
+get_summary_info <- function(ted_data) {
+  ret <- list()
+  ret$length <- length(dataset)
+  return (ret)
+} 
