@@ -30,9 +30,11 @@ source("scripts/chart_three.R")
 ## Chart One
 ***
 
-## Chart Two
+## Distribution of Views by Year
 ***
-
+```{r views_by_year, echo = FALSE, warning = FALSE}
+views_by_year_plot(ted_main)
+```
 ## Ted Talk Ratings
 ***
 Viewers have the ability to choose up to three adjectives from a list when they
