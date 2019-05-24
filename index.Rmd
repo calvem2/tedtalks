@@ -55,6 +55,13 @@ density of the points.
 
 ## Distribution of Views by Year
 ***
+The next chart we made was designed to answer the question of whether the year 
+the talk was made had any impact on the number of views it recieved. The use 
+of the box and whisker chart was used to show to show multiple distributions 
+of all of the years in a way that allowed a quick comparison. The chart did not
+appear to reveal any significant differences between the years and the number
+of views, however, the distribution does appear to get slightly tighter as time
+went on. There were no obvious changes over time.
 
 ```{r views_by_year, echo = FALSE, warning = FALSE}
 views_by_year_plot(ted_main)
