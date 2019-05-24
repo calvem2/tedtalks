@@ -3,33 +3,30 @@ title: "Ted Talks"
 author: "Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"
 date: "5/25/2019"
 ---
-##Introduction
-
-Intro Here
-
-##Summary Information
-
-Our data is downloaded from the website Kaggle, but the data origonally came from the [Ted Talks' wbsite](https://www.ted.com/talks). The data contains `r ted_talk_count` videos run from the start of the TED website until September 21st, 2017. Since that time the most viewed video has been `r most_viewed_video` by `r most_viewed_speaker` with `r most_views` total views.
-
-
-```{r George Table}
-summary(cars)
-```
-
-##Plot 1 title here
-
-##Plot 2 title here
-
-##Plot 3 title here
 
 ```{r setup, include=FALSE}
 ted_main <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
-source("scripts/summary.R")
+#source("scripts/summary.R")
 source("scripts/table.R")
 source("scripts/chart_one.R")
 source("scripts/chart_two.R")
 source("scripts/chart_three.R")
 ```
+
+##Introduction
+***
+
+Intro Here
+
+##Summary Information
+***
+
+Our data is downloaded from the website Kaggle, but the data origonally came
+from the [Ted Talks' wbsite](https://www.ted.com/talks). The data contains
+`r ted_talk_count` videos run from the start of the TED website until September
+21st, 2017. Since that time the most viewed video has been `r most_viewed_video`
+by `r most_viewed_speaker` with `r most_views` total views.
+
 
 ## Introduction
 ***
@@ -46,8 +43,13 @@ source("scripts/chart_three.R")
 ## Distribution of Views by Year
 ***
 
+```{r views_by_year, echo = FALSE, warning = FALSE}
+views_by_year_plot(ted_main)
+```
+
 ## Ted Talk Ratings
 ***
+
 Viewers have the ability to choose up to three adjectives from a list when they
 rate videos on TED's website. The following chart explores how often users
 choose each adjective when leaving a rating. It also explores the popularity of
