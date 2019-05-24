@@ -16,7 +16,7 @@ source("scripts/chart_three.R")
 ##Introduction
 
 Our [data](https://www.kaggle.com/rounakbanik/ted-talks) is downloaded from the
-website Kaggle, but the data origonally came from [Ted.com](https://www.ted.com/talks) and looks at all the TEDTalks (which started in 1984) published on TED's website as of September 21st, 2017. It contains data such as: the number of comments, a brief description, duration of the talk, where the event took place, the number of languages the talk is in, the film date, the main speaker’s name, the number of speakers, the publishing date, the ratings, the speaker occupation, the number views, and the name of the talk. 
+website Kaggle, but the data originally came from [Ted.com](https://www.ted.com/talks) and looks at all the TEDTalks (which started in 1984) published on TED's website as of September 21st, 2017. It contains data such as: the number of comments, a brief description, duration of the talk, where the event took place, the number of languages the talk is in, the film date, the main speaker’s name, the number of speakers, the publishing date, the ratings, the speaker occupation, the number views, and the name of the talk. 
 
 Our group is interested in this domain because Ted Talks have become a cultural icon in our time. Ted Talks cover a large range of topics and some are more widely viewed than others. We are curious to explore datasets of Ted Talks to determine if it will reveal information about society or the times we live in. It is also possible that we will not find anything that we can extrapolate to be a reflection of our society but rather will simply learn more about what people find interesting or entertaining and what they do not.
 
@@ -38,8 +38,8 @@ kable(data_table, "html", col.names = c("Date", "Title", "Speaker", "Tags", "Lan
 ***
 The reason for using a scatter plot for this visualization was to determine 
 if there is a relationship between the length of the video and the number of 
-views it recieves. Our question of interest was 
-**Do longer or shorter ted talks recieve more views?**
+views it receives. Our question of interest was 
+**Do longer or shorter ted talks receive more views?**
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 plot_viewership_duration(ted_main)
@@ -47,17 +47,17 @@ plot_viewership_duration(ted_main)
 
 A smoothed line was added to more vividly show any correlations that might be 
 present. The chart shows a few things. First, videos longer than 37 minutes did
-not recieve more than 10,000,000 views which may suggest that very long videos
+not receive more than 10,000,000 views which may suggest that very long videos
 are not captivating viewers. Additionally, the smoothed line is nearly 
 horizontal with one noticeable peak at around 17-20 minutes so this could be 
 the ideal video length for viewers in terms of their attention span. 
-Generally the videos were less than 25 minutes which is evident through the 
+Generally, the videos were less than 25 minutes which is evident through the 
 density of the points.
 
 ## Distribution of Views by Year
 ***
 The next chart we made was designed to answer the question of whether the year 
-the talk was made had any impact on the number of views it recieved. The use 
+the talk was made had any impact on the number of views it received. The use 
 of the box and whisker chart was used to show to show multiple distributions 
 of all of the years in a way that allowed a quick comparison. The chart did not
 appear to reveal any significant differences between the years and the number
@@ -74,7 +74,7 @@ views_by_year_plot(ted_main)
 Viewers have the ability to choose up to three adjectives from a list when they
 rate videos on TED's website. The following chart explores how often users
 choose each adjective when leaving a rating. It also explores the popularity of
-'postive' vs. 'negative' adjectives in ratings.
+'positive' vs. 'negative' adjectives in ratings.
 
 The chart reveals the most popular adjective chosen by users was **"Inspiring"**
 while the least popular was **"Confusing"**. Of the positive ratings,
