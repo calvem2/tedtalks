@@ -6,7 +6,7 @@ date: "5/25/2019"
 
 ```{r setup, include=FALSE}
 ted_main <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
-#source("scripts/summary.R")
+source("scripts/summary.R")
 source("scripts/table.R")
 source("scripts/chart_one.R")
 source("scripts/chart_two.R")

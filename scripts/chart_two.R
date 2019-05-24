@@ -29,9 +29,8 @@ views_by_year_plot <- function(ted_talks) {
   plot <- ggplot(ted_talks) +
     geom_boxplot(mapping = aes(x = published_date, y = views)) +
     scale_y_continuous(
-      breaks = pretty(ted_talks$views, n = 50),
-      labels = comma,
-      limits = c(0, 10000000)
+      breaks = pretty(ted_talks$views, n = 10),
+      labels = comma
     ) +
     labs(title = "Views by Year") +
     xlab("Year Published") +
