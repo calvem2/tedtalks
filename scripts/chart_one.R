@@ -1,4 +1,4 @@
-# Chart one: Viewship vs. Duration
+# Chart One: Viewship vs. Duration
 # Main Contributor: Sarah Trostle
 
 # Load packages 
@@ -16,6 +16,7 @@ ted_talks_main <- read.csv("data/ted_main.csv", stringsAsFactors = TRUE)
 # Purpose of visualization: The reason for using a scatter plot for this
 # visualization is to determine if there is a relationship between the length
 # of the video and the number of views it recieves. 
+# Question of interest: Do longer or shorter ted talks recieve more views?
 
 # Wrangle data
 
