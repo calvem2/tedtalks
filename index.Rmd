@@ -7,16 +7,16 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+source("scripts/table.R")
 ```
 
-## R Markdown
+## General Overview
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+There are a number of metrics that Ted Talks measure to gauge each talk's success. Below is a table of the top ten talks based on view count. In the table you will find the date the talk was filmed, the title with a link to the talk, the speaker's name, the tags associated with the talk, the number of languages that the talk is available in, the number of comments on the video and the number of views. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r table, echo=FALSE}
+kable(table, "html", col.names = c("Date", "Title", "Speaker", "Tags", "Languages", "Comments", "Views")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) %>% column_spec(1, width = "10em")
 ```
 
 ## Including Plots
