@@ -21,9 +21,8 @@ website Kaggle, but the data originally came from [Ted.com](https://www.ted.com/
 Our group is interested in this domain because Ted Talks have become a cultural icon in our time. Ted Talks cover a large range of topics and some are more widely viewed than others. We are curious to explore datasets of Ted Talks to determine if it will reveal information about society or the times we live in. It is also possible that we will not find anything that we can extrapolate to be a reflection of our society but rather will simply learn more about what people find interesting or entertaining and what they do not.
 
 ##Summary Information
-***
 
-
+From Ted.com's launch, there have been `r summary_info(ted_main)[1]` videos posted. `r summary_info(ted_main)[4]`'s video `r summary_info(ted_main)[3]` has the most views of any video at `r summary_info(ted_main)[2]` views. However, `r summary_info(ted_main)[5]` hasrecorded more videos than any other individual at `r summary_info(ted_main)[6]` videos. The most commented video was `r summary_info(ted_main)[8]` receiving `r summary_info(ted_main)[7]` comments.
 
 ## General Overview
 
