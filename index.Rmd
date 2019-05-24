@@ -37,8 +37,24 @@ kable(data_table, "html", col.names = c("Date", "Title", "Speaker", "Tags", "Lan
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) %>% column_spec(1, width = "10em")
 ```
 
-## Chart One
+## Duration of Video vs. Viewership
 ***
+The reason for using a scatter plot for this visualization was to determine 
+if there is a relationship between the length of the video and the number of 
+views it recieves. Our question of interest was 
+**Do longer or shorter ted talks recieve more views?**
+
+```{r echo = FALSE, warning = FALSE}
+plot_viewership_duration(ted_main)
+```
+A smoothed line was added to more vividly show any correlations that might be 
+present. The chart shows a few things. First, videos longer than 37 minutes did
+not recieve more than 10,000,000 views which may suggest that very long videos
+are not captivating viewers. Additionally, the smoothed line is nearly 
+horizontal with one noticeable peak at around 17-20 minutes so this could be 
+the ideal video length for viewers in terms of their attention span. 
+Generally the videos were less than 25 minutes which is evident through the 
+density of the points.
 
 ## Distribution of Views by Year
 ***
