@@ -15,8 +15,8 @@ source("scripts/chart_three.R")
 
 ##Introduction
 
-Our data is downloaded from the website Kaggle, but the data origonally came
-from [Ted.com](https://www.ted.com/talks) and looks at all the TEDTalks (which started in 1984) published on TED's website as of September 21st, 2017. It contains data such as: the number of comments, a brief description, duration of the talk, where the event took place, the number of languages the talk is in, the film date, the main speaker’s name, the number of speakers, the publishing date, the ratings, the speaker occupation, the number views, and the name of the talk. 
+Our [data](https://www.kaggle.com/rounakbanik/ted-talks) is downloaded from the
+website Kaggle, but the data origonally came from [Ted.com](https://www.ted.com/talks) and looks at all the TEDTalks (which started in 1984) published on TED's website as of September 21st, 2017. It contains data such as: the number of comments, a brief description, duration of the talk, where the event took place, the number of languages the talk is in, the film date, the main speaker’s name, the number of speakers, the publishing date, the ratings, the speaker occupation, the number views, and the name of the talk. 
 
 Our group is interested in this domain because Ted Talks have become a cultural icon in our time. Ted Talks cover a large range of topics and some are more widely viewed than others. We are curious to explore datasets of Ted Talks to determine if it will reveal information about society or the times we live in. It is also possible that we will not find anything that we can extrapolate to be a reflection of our society but rather will simply learn more about what people find interesting or entertaining and what they do not.
 
