@@ -1,30 +1,67 @@
 ---
 title: "Ted Talks"
-author: "Megan Calverley"
-date: "5/20/2019"
-output: html_document
+author: "Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"
+date: "5/25/2019"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, echo=FALSE}
+ted_main <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
+source("scripts/summary.R")
 source("scripts/table.R")
+source("scripts/chart_one.R")
+source("scripts/chart_two.R")
+source("scripts/chart_three.R")
 ```
+
+##Introduction
+***
+
+Intro Here
+
+##Summary Information
+***
+
+Our data is downloaded from the website Kaggle, but the data origonally came
+from the [Ted Talks' wbsite](https://www.ted.com/talks). The data contains
+`r ted_talk_count` videos run from the start of the TED website until September
+21st, 2017. Since that time the most viewed video has been `r most_viewed_video`
+by `r most_viewed_speaker` with `r most_views` total views.
+
 
 ## General Overview
 
-There are a number of metrics that Ted Talks measure to gauge each talk's success. Below is a table of the top ten talks based on view count. In the table you will find the date the talk was filmed, the title with a link to the talk, the speaker's name, the tags associated with the talk, the number of languages that the talk is available in, the number of comments on the video and the number of views. 
+There are a number of metrics that Ted Talks measure to gauge each talk's success. Below is a table of the **top ten** Ted Talks based on view count. In the table you will find the date the talk was filmed, the title with a link to the talk, the speaker's name, the tags associated with the talk, the number of languages that the talk is available in, the number of comments on the video and the number of views. 
 
-```{r table, echo=FALSE}
-kable(table, "html", col.names = c("Date", "Title", "Speaker", "Tags", "Languages", "Comments", "Views")) %>%
+```{r data_table, echo=FALSE}
+kable(data_table, "html", col.names = c("Date", "Title", "Speaker", "Tags", "Languages", "Comments", "Views")) %>%
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE) %>% column_spec(1, width = "10em")
 ```
 
-## Including Plots
+## Chart One
+***
 
-You can also embed plots, for example:
+## Distribution of Views by Year
+***
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r views_by_year, echo = FALSE, warning = FALSE}
+views_by_year_plot(ted_main)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Ted Talk Ratings
+***
+
+Viewers have the ability to choose up to three adjectives from a list when they
+rate videos on TED's website. The following chart explores how often users
+choose each adjective when leaving a rating. It also explores the popularity of
+'postive' vs. 'negative' adjectives in ratings.
+
+The chart reveals the most popular adjective chosen by users was **"Inspiring"**
+while the least popular was **"Confusing"**. Of the positive ratings,
+**"Jaw-dropping"** was the least popular. Of the negative ratings,
+**"OK"** was the most popular. In general, positive ratings were chosen more
+frequently than negative ratings. This could be partially due to the fact that
+TED offers less options for negative ratings than positive.
+
+```{r ratings_plot, echo = FALSE, warning = FALSE}
+ratings_plot(ted_main)
+```

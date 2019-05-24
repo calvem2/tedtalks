@@ -1,27 +1,30 @@
-# Summary Table Script File
+# R Script for the Table
+# Main Contributor: George Prentice
+
 library("dplyr")
 library("kableExtra")
 library("jsonlite")
 library("anytime")
+library("tidyr")
 
 df <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
 
+typeof(df$tags)
 
 create_table <- function(dataframe) {
   # Add markdown to insert a link to the Talk within the title column
   dataframe$title <- paste0("[", dataframe$title, "](", dataframe$url, ")")
-
+  
   # Convert the film dates in the data frame
   dataframe$film_date <- anydate(dataframe$film_date)
-
-  # Format the tags column
   
-
+  
   sum_table <- dataframe %>% arrange(desc(views)) %>%
     mutate(index = row_number() -1) %>%
     filter(index < 10) %>% 
+    mutate(tags = gsub("\\[|\'|\\]", "", tags) )%>%
     select(film_date ,title, main_speaker, tags, languages, comments, 
-                       views)
+           views)
   
   return(sum_table)
 }
