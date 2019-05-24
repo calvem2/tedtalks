@@ -9,7 +9,7 @@ library("plotly")
 library("scales")
 
 
-#take in data
+# Take in data
 ted_talks_main <- read.csv("data/ted_main.csv", stringsAsFactors = TRUE)
 
 
@@ -17,10 +17,7 @@ ted_talks_main <- read.csv("data/ted_main.csv", stringsAsFactors = TRUE)
 # visualization is to determine if there is a relationship between the length
 # of the video and the number of views it recieves. 
 
-viewership_duration <- function(ted_talks_main){
-  ted_talks <- ted_talks_main %>% 
-    select(views, duration)
-}
+# Wrangle data
 
 categories_of_interest <- ted_talks_main %>% 
   select(views, duration) %>% 
@@ -29,14 +26,13 @@ categories_of_interest <- ted_talks_main %>%
 
 # Plot data
 
-
-ggplot(data = categories_of_interest) +
-  geom_point(mapping = aes(x = duration_minutes, y = views))+ 
-  xlab("Duration in Minutes") + 
-  ylab("Number of Views")+
-  labs(title = "Viewership vs. Duration of talk")
-
-
+ plot_viewership_duration <- function(ted_talks_main){
+   ggplot(categories_of_interest,aes(x= duration_minutes,y= views)) + geom_point(alpha = 0.2)+
+     geom_smooth(mapping = aes(x = duration_minutes, y = views))+
+     xlab("Duration in Minutes") + 
+     ylab("Number of Views")+
+     labs(title = "Duration of Ted Talk vs. Viewership")
+   }
 
 
 
