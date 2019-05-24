@@ -90,6 +90,6 @@ ratings_plot <- function(ted_talks) {
       axis.ticks.y = element_blank(),
       plot.title = element_text(hjust = 0.5)
     )
-  plot <- ggplotly(plot, tooltip = "text")
+  plot <- ggplotly(plot, tooltip = "text", width = 1000)
   plot
 }
