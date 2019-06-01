@@ -48,8 +48,8 @@ year_main_content <- mainPanel(
   plotlyOutput("metrics_by_year")
 )
 
-# Make tab one
-panel_one <- tabPanel(
+# Make first interactive tab
+interactive_panel_one <- tabPanel(
   "Video Popularity",
   tags$h1("Exploring User Interaction with TED Videos"),
   tags$hr(),
@@ -74,6 +74,44 @@ panel_one <- tabPanel(
 #######################################################
 #Interactive Page 3
 
+# Set choices for style groups
+style_groups <- list(
+  "Affect Words" = "posemo negemo",
+  "Social Words" = "family friend female male",
+  "Cognitive Processes" = "insight cause discrep tenat certain differ",
+  "Perceptual Processes" = "see hear feel",
+  "Biological Processes" = "body health sexual ingest",
+  "Core Drives/Needs" = "affiliation achieve power reward risk",
+  "Time Orientation" = "focuspast focuspresent focusfuture",
+  "Relativity" = "motion space time",
+  "Personal Concerns" = "work leisure home money relig death",
+  "Informal Speech" = "swear netspeak assent nonflu filler"
+)
+
+# Make sidebar with widgets for chart
+style_sidebar_content <- sidebarPanel(
+  selectInput(
+    "style_group",
+    label = "Word Style Group",
+    choices = style_groups
+  )
+)
+
+# Make main panel chart to be displayed
+style_main_content <- mainPanel(
+  plotlyOutput("word_style")
+)
+
+# Make 3rd interactive tab 
+interactive_panel_three <- tabPanel(
+  "Language Style",
+  tags$h1("Exploring Types of Language Used in TED Talks"),
+  tags$hr(),
+  sidebarLayout(
+    style_sidebar_content,
+    style_main_content
+  )
+)
 
 
 
@@ -89,5 +127,6 @@ panel_one <- tabPanel(
 #######################################################
 ui <- navbarPage(
   "TED Talks",
-  panel_one
+  interactive_panel_one,
+  interactive_panel_three
 )
