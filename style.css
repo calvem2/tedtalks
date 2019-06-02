@@ -1,0 +1,77 @@
+/*
+    TED Talks
+    Final Deliverable
+
+    Styles shiny app
+*/
+
+/*
+    THE FOLLOWING ARE EXAMPLES OF STYLES WE COULD IMPLEMENT
+    cmd + / toggles comments
+
+    Any tags added in the app_ui.R file can be styled in a similar way
+      - Ex: tags$code(..., class="my-class", id="my-id") ***class and id attributes optional
+          - style with:
+              #my-id {...} // give html element an id when you want to style only one specific element
+              .my-class {...} // give group of elements the same class when you want to style several elements
+              code {...} // use html tag name when you want to style all elements of certain type (h1, code, bloquote, etc.)
+*/
+
+
+/* styles body of app */
+body {
+    /* background-color: INSERT COLOR OR HEX CODE; */
+}
+
+/* styles navigation bar */
+.navbar {
+  /* background-color: #e62b1e; */
+}
+
+/* styles header of navigation bar */
+.navbar-brand {
+  /* background-color:  */
+}
+
+/* styles text of navbar header */
+.navbar span{
+  /* color: #fff !important; */
+  /* font-weight: bolder; */
+}
+
+/* styles text of inactive navbar tabs */
+.navbar-nav li a {
+  /* color: #fff !important; */
+}
+
+/* stles active and hovered tabs in navbar */
+.navbar-nav li a:hover, .navbar-nav > .active > a {
+/* font color of tab selected or being hovered over */
+/* color:  */
+/* background color of tab selected or being hovered over */
+/* background-color: #ad1f14 !important; */
+}
+
+
+/* styles titles on tab pages */
+h1 {
+    /* font: INSERT FONT NAME */
+    /* color: INSERT COLOR */
+}
+
+/* styles all second level headings */
+h2 {
+
+}
+
+/* styles widgets */
+.well {
+  /* background-color: INSERT COLOR OR HEX CODE; */
+}
+
+/* styles widget labels */
+.control-label {
+  /* color: */
+  /* font-size:  */
+  /* font-style: italic; */
+}
