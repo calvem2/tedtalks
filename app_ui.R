@@ -2,7 +2,7 @@
 # app_ui.R script for our Shiny App
 
 # Load libraries --------------------------------------------------------------
-
+library(plotly)
 
 
 #######################################################
@@ -51,7 +51,7 @@ year_main_content <- mainPanel(
 # Make first interactive tab
 interactive_panel_one <- tabPanel(
   "Video Popularity",
-  tags$h1("Exploring User Interaction with TED Videos"),
+  tags$h1("User Interaction with TED Videos"),
   tags$hr(),
   # Chart one and widgets
   tags$h2("Overall Interaction"),
@@ -105,7 +105,7 @@ style_main_content <- mainPanel(
 # Make 3rd interactive tab 
 interactive_panel_three <- tabPanel(
   "Language Style",
-  tags$h1("Exploring Types of Language Used in TED Talks"),
+  tags$h1("Types of Language Used in TED Talks"),
   tags$hr(),
   sidebarLayout(
     style_sidebar_content,
@@ -125,8 +125,11 @@ interactive_panel_three <- tabPanel(
 
 
 #######################################################
-ui <- navbarPage(
-  "TED Talks",
-  interactive_panel_one,
-  interactive_panel_three
+ui <- fluidPage(
+  includeCSS("style.css"),
+  navbarPage(
+    "TED Talks",
+    interactive_panel_one,
+    interactive_panel_three
+  )
 )
