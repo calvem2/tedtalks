@@ -10,7 +10,7 @@ library(plotly)
 intropanel <- tabPanel(
   "Project Overview",
   mainPanel(
-    tags$h1("What makes a Ted Talk Tick?"),
+    tags$h1("What Makes a Ted Talk Tick?"),
     tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
     tags$p("Date: 6/5/2019"),
     
@@ -85,7 +85,7 @@ year_main_content <- mainPanel(
 # Make first interactive tab
 interactive_panel_one <- tabPanel(
   "Video Popularity",
-  tags$h1("User Interaction with TED Videos"),
+  tags$h1("How do users interact with Ted Talk Videos?"),
   tags$hr(),
   # Chart one and widgets
   tags$h2("Overall Interaction"),
@@ -181,7 +181,7 @@ style_main_content <- mainPanel(
 # Make 3rd interactive tab 
 interactive_panel_three <- tabPanel(
   "Language Style",
-  tags$h1("Types of Language Used in TED Talks"),
+  tags$h1("What kind of language is used in TED Talks?"),
   tags$hr(),
   sidebarLayout(
     style_sidebar_content,
