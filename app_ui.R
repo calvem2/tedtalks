@@ -66,9 +66,51 @@ interactive_panel_one <- tabPanel(
 
 #######################################################
 #Interactive Page 2
+metrics_groups <- list(
+  "Function Words" = "ppron ipron article prep auxverb adverb conj negate",
+  "Grammar Types" = "verb adj compare interrog number quant"
+)
 
+# Create siderbar with wdiget for the chart output
+lang_met_sidebar_content <- sidebarPanel(
+  selectInput(
+    "language_metrics",
+    label = "Select the Language Metrics",
+    choices = metrics_groups
+  )
+)
 
+# Create main panel for Plot content
+lang_met_main_content <- mainPanel(
+  plotOutput("lang_metrics"),
+  tags$p("This plot shows the language metrics for two different categories
+    of metrics. The first category, Function Words, includes
+    personal pronouns, impersonal pronouns, articles, prepositions,
+    auxiliary verbs, common adverbs, conjunctions and negations. 
+    The second category, Grammar Types, includes regular verbs,
+    adjectives, comparatives, interrogatives, numbers and quantifiers.
+    Using this data we can better understand the sentence structure in 
+    successful Ted Talks. Additionally, this information can help us
+    better understand how information is transferred from individual
+    to another efficiently."),
+  tags$p("When reviewing the plots we can see that talks contain
+         significantly more prepositions and verbs. This is likely
+         connected to the purpose of talks. Inspiration and calls
+         to action are common in many talks therefore it makes sense
+         that these language types are the most common.")
+)
 
+# Create second Interactive Tab
+interactive_panel_two <- tabPanel(
+  "Language Metrics",
+  tags$h1("What words are used in Ted Talks?"),
+  tags$hr(),
+  sidebarLayout(
+    lang_met_main_content,
+    lang_met_sidebar_content
+  )
+)
+ 
 
 
 #######################################################
@@ -130,6 +172,7 @@ ui <- fluidPage(
   navbarPage(
     "TED Talks",
     interactive_panel_one,
+    interactive_panel_two,
     interactive_panel_three
   )
 )
