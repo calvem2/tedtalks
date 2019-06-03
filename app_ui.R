@@ -11,7 +11,7 @@ library(plotly)
 intropanel <- tabPanel(
   "Project Overview",
   mainPanel(
-    tags$h1("What makes a Ted Talk Tick?"),
+    tags$h1("What Makes a Ted Talk Tick?"),
     tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
     tags$p("Date: 6/5/2019"),
     
@@ -111,7 +111,7 @@ year_main_content <- mainPanel(
 # Make first interactive tab
 interactive_panel_one <- tabPanel(
   "Video Popularity",
-  tags$h1("User Interaction with TED Videos"),
+  tags$h1("How do users interact with Ted Talk Videos?"),
   tags$hr(),
   # Chart one and widgets
   tags$h2("Overall Interaction"),
@@ -178,6 +178,7 @@ interactive_panel_two <- tabPanel(
 
 # Set choices for style groups
 style_groups <- list(
+  "All" = "posemo negemo family friend female male insight cause discrep tenat certain differ see hear feel body health sexual ingest affiliation achieve power reward risk focuspast focuspresent focusfuture motion space time work leisure home money relig death swear netspeak assent nonflu filler",
   "Affect Words" = "posemo negemo",
   "Social Words" = "family friend female male",
   "Cognitive Processes" = "insight cause discrep tenat certain differ",
@@ -201,13 +202,13 @@ style_sidebar_content <- sidebarPanel(
 
 # Make main panel chart to be displayed
 style_main_content <- mainPanel(
-  plotlyOutput("word_style")
+  ggiraphOutput("word_style")
 )
 
 # Make 3rd interactive tab 
 interactive_panel_three <- tabPanel(
   "Language Style",
-  tags$h1("Types of Language Used in TED Talks"),
+  tags$h1("What kind of language is used in TED Talks?"),
   tags$hr(),
   sidebarLayout(
     style_sidebar_content,
