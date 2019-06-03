@@ -152,6 +152,7 @@ interactive_panel_two <- tabPanel(
 
 # Set choices for style groups
 style_groups <- list(
+  "All" = "posemo negemo family friend female male insight cause discrep tenat certain differ see hear feel body health sexual ingest affiliation achieve power reward risk focuspast focuspresent focusfuture motion space time work leisure home money relig death swear netspeak assent nonflu filler",
   "Affect Words" = "posemo negemo",
   "Social Words" = "family friend female male",
   "Cognitive Processes" = "insight cause discrep tenat certain differ",
@@ -175,7 +176,7 @@ style_sidebar_content <- sidebarPanel(
 
 # Make main panel chart to be displayed
 style_main_content <- mainPanel(
-  plotlyOutput("word_style")
+  ggiraphOutput("word_style")
 )
 
 # Make 3rd interactive tab 

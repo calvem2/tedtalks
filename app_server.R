@@ -6,6 +6,9 @@ library(dplyr)
 library(scales)
 library(ggplot2)
 library(tidyr)
+library(packcircles)
+library(viridis)
+library(ggiraph)
 
 # Load data -------------------------------------------------------------------
 ted_main <- read.csv("data/ted_main.csv", stringsAsFactors = FALSE)
@@ -34,7 +37,7 @@ perc_to_wc <- function(col) {
   round(col * ted_lang$WC / 100)
 }
 
-# convert word style columns from percentages and gather based on style group
+# convert word style columns to word count and gather based on style group
 ted_word_styles <- ted_lang %>%
   mutate(posemo = perc_to_wc(posemo), negemo = perc_to_wc(negemo),
          family = perc_to_wc(family), friend = perc_to_wc(friend),
@@ -63,7 +66,9 @@ ted_word_styles <- ted_lang %>%
          sexual, ingest, affiliation, achieve, power, reward, risk, focuspast,
          focuspresent, focusfuture, motion, space, time, work, leisure,
          home, money, relig, death, swear, netspeak, assent, nonflu, filler) %>%
-  gather(key = type, value = word_count)
+  gather(key = type, value = word_count) %>%
+  group_by(type) %>% 
+  summarise(word_count = sum(word_count, na.rm = TRUE))
 
 # Convert Word Metrics from percent to WC
 ted_word_metrics <- ted_lang %>%
@@ -100,7 +105,7 @@ server <- function(input, output) {
   })
   
   # INTERACTIVE PAGE TWO PLOT(S)
-  output$lang_metrics <- renderPlot({
+  output$lang_metrics <- renderggiraph({
     current_met <- ted_word_metrics %>%
       filter(is.element(type_met, unlist(strsplit(input$language_metrics, " " )))) %>%
       group_by(type_met) %>%
@@ -119,24 +124,36 @@ server <- function(input, output) {
   })
   
   # INTERACTIVE PAGE THREE PLOT(S)
-  output$word_style <- renderPlotly({
+  output$word_style <- renderggiraph({
+    # Prep data
+    styles <- unlist(strsplit(input$style_group, " "))
     current <- ted_word_styles %>%
-      filter(is.element(type, unlist(strsplit(input$style_group, " ")))) %>%
-      group_by(type) %>%
-      summarise(total_words = sum(word_count, na.rm = TRUE))
+      filter(is.element(type, styles))
+    current$text = paste(current$type, "\n", current$word_count, "words")
+    packing <- circleProgressiveLayout(current$word_count,
+                                        sizetype = "area")
+    current = cbind(current, packing)
+    current.gg <- circleLayoutVertices(packing, npoints=50)
     
-    p <- ggplot(current) +
-      geom_col(aes(x = type, y = total_words,
-                   text = paste(total_words, "words"))) +
-      scale_y_continuous(
-        breaks = pretty(current$total_words),
-        labels = comma
-    ) +
-      labs(title = "Frequency of Different Types of Words Within a Group") +
-      xlab("Word Type") +
-      ylab("Total Words") +
-      theme(plot.title = element_text(hjust = 0.5))
-    ggplotly(p, tooltip = "text")
+    # Set text size for plot
+    max_bubbles <- nrow(ted_word_styles)
+    text_size = 3
+    if (length(styles) != max_bubbles) {
+      text_size <- 6
+    }
     
+    # Make plot
+    p <- ggplot() + 
+      # Make the bubbles
+      geom_polygon_interactive(data = current.gg, aes(x, y, group = id, fill=id, tooltip = current$text[id], data_id = id), colour = "black", alpha = 0.6) +
+      scale_fill_viridis() +
+      # Add text in the center of each bubble + control its size
+      geom_text(data = current, aes(x, y, label = type), size = text_size, color = "black") +
+      #scale_size_continuous(range = size_range) +
+      # General theme:
+      theme_void() + 
+      theme(legend.position="none", plot.margin = unit(c(0,0,0,0), "cm")) +
+      coord_equal()
+    ggiraph(ggobj = p, width_svg = 7, height_svg = 7)
   })
 }
