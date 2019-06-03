@@ -16,7 +16,7 @@ intropanel <- tabPanel(
     
     tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
-      a("Ted.com", href = "https://www.ted.com/talks"),"and looks at all the TEDTalks
+      a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
       (which started in 1984) published on TED’s website as of", strong("September 21st, 2017."),
       "It contains data such as: the number of comments, a brief description, duration
       of the talk, where the event took place, the number of languages the talk is in,
