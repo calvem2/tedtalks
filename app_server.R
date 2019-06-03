@@ -65,6 +65,20 @@ ted_word_styles <- ted_lang %>%
          home, money, relig, death, swear, netspeak, assent, nonflu, filler) %>%
   gather(key = type, value = word_count)
 
+# Convert Word Metrics from percent to WC
+ted_word_metrics <- ted_lang %>%
+  mutate(ppron = perc_to_wc(ppron), ipron = perc_to_wc(ipron),
+         article = perc_to_wc(article), prep = perc_to_wc(prep), 
+         auxverb = perc_to_wc(auxverb), adverb = perc_to_wc(adverb),
+         conj = perc_to_wc(conj), negate = perc_to_wc(negate),
+         verb = perc_to_wc(verb), adj = perc_to_wc(adj),
+         compare = perc_to_wc(compare), interrog = perc_to_wc(interrog),
+         number = perc_to_wc(number), quant = perc_to_wc(quant)) %>%
+  select(ppron, ipron, article, prep, auxverb, adverb,
+         conj, negate, verb, adj, compare, interrog, number, quant) %>%
+  gather(key = type_met, value = met_word_count)
+         
+
 # Create server ---------------------------------------------------------------
 server <- function(input, output) {
   # INTERACTIVE PAGE ONE PLOT(S)
@@ -86,6 +100,23 @@ server <- function(input, output) {
   })
   
   # INTERACTIVE PAGE TWO PLOT(S)
+  output$lang_metrics <- renderPlot({
+    current_met <- ted_word_metrics %>%
+      filter(is.element(type_met, unlist(strsplit(input$language_metrics, " " )))) %>%
+      group_by(type_met) %>%
+      summarise(total_words = sum(met_word_count, na.rm = TRUE))
+      
+    
+    ggplot(current_met) +
+      geom_col(aes(x = type_met, y = total_words)) + 
+      labs(title = "Frequency of Different Language Metrics") +
+      xlab("Metric Type") +
+      ylab("Total Words") +
+      scale_y_continuous(
+        breaks = pretty(current_met$total_words),
+        labels = comma
+      )
+  })
   
   # INTERACTIVE PAGE THREE PLOT(S)
   output$word_style <- renderPlotly({

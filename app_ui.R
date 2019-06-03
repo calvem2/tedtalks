@@ -10,11 +10,11 @@ library(plotly)
 intropanel <- tabPanel(
   "Project Overview",
   mainPanel(
-    h1("What makes a Ted Talk Tick?"),
-    p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
-    p("Date: 6/5/2019"),
+    tags$h1("What makes a Ted Talk Tick?"),
+    tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
+    tags$p("Date: 6/5/2019"),
     
-    p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
+    tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
       a("Ted.com", href = "https://www.ted.com/talks"),"and looks at all the TEDTalks
       (which started in 1984) published on TED’s website as of", strong("September 21st, 2017."),
@@ -24,7 +24,7 @@ intropanel <- tabPanel(
       date, the ratings, the speaker occupation, the number views, and the name of the
       talk."),
     
-    p("Our group is interested in this domain because Ted Talks have become a
+    tags$p("Our group is interested in this domain because Ted Talks have become a
       cultural icon in our time. Ted Talks cover a large range of topics and some are
       more widely viewed than others. We are curious to explore datasets of Ted Talks
       to determine if it will reveal information about society or the times we live
@@ -32,14 +32,14 @@ intropanel <- tabPanel(
       to be a reflection of our society but rather will simply learn more about what
       people find interesting or entertaining and what they do not."),
     
-    h2("Overview"),
-    p("From Ted.com’s launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+    tags$h2("Overview"),
+    tags$p("From Ted.com’s launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
       "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
       video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
       any other individual at 9 videos. The most commented video was", em("Richard
                                                                           Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
     ),
-  img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
+  tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
       height = 360)
   
 )
@@ -100,9 +100,51 @@ interactive_panel_one <- tabPanel(
 
 #######################################################
 #Interactive Page 2
+metrics_groups <- list(
+  "Function Words" = "ppron ipron article prep auxverb adverb conj negate",
+  "Grammar Types" = "verb adj compare interrog number quant"
+)
 
+# Create siderbar with wdiget for the chart output
+lang_met_sidebar_content <- sidebarPanel(
+  selectInput(
+    "language_metrics",
+    label = "Select the Language Metrics",
+    choices = metrics_groups
+  )
+)
 
+# Create main panel for Plot content
+lang_met_main_content <- mainPanel(
+  plotOutput("lang_metrics"),
+  tags$p("This plot shows the language metrics for two different categories
+    of metrics. The first category, Function Words, includes
+    personal pronouns, impersonal pronouns, articles, prepositions,
+    auxiliary verbs, common adverbs, conjunctions and negations. 
+    The second category, Grammar Types, includes regular verbs,
+    adjectives, comparatives, interrogatives, numbers and quantifiers.
+    Using this data we can better understand the sentence structure in 
+    successful Ted Talks. Additionally, this information can help us
+    better understand how information is transferred from individual
+    to another efficiently."),
+  tags$p("When reviewing the plots we can see that talks contain
+         significantly more prepositions and verbs. This is likely
+         connected to the purpose of talks. Inspiration and calls
+         to action are common in many talks therefore it makes sense
+         that these language types are the most common.")
+)
 
+# Create second Interactive Tab
+interactive_panel_two <- tabPanel(
+  "Language Metrics",
+  tags$h1("What words are used in Ted Talks?"),
+  tags$hr(),
+  sidebarLayout(
+    lang_met_main_content,
+    lang_met_sidebar_content
+  )
+)
+ 
 
 
 #######################################################
@@ -164,6 +206,7 @@ ui <- fluidPage(
     img(src = "./imgs/logo.png",width = 65.4, height = 30.8),
     intropanel,
     interactive_panel_one,
+    interactive_panel_two,
     interactive_panel_three
   )
 )
