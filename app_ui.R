@@ -7,8 +7,42 @@ library(plotly)
 
 #######################################################
 #Summary Page
-
-
+intropanel <- tabPanel(
+  "Project Overview",
+  mainPanel(
+    h1("What makes a Ted Talk Tick?"),
+    p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
+    p("Date: 6/5/2019"),
+    
+    p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
+      "is downloaded from the website Kaggle, but the data originally came from",
+      a("Ted.com", href = "https://www.ted.com/talks"),"and looks at all the TEDTalks
+      (which started in 1984) published on TED’s website as of", strong("September 21st, 2017."),
+      "It contains data such as: the number of comments, a brief description, duration
+      of the talk, where the event took place, the number of languages the talk is in,
+      the film date, the main speaker’s name, the number of speakers, the publishing
+      date, the ratings, the speaker occupation, the number views, and the name of the
+      talk."),
+    
+    p("Our group is interested in this domain because Ted Talks have become a
+      cultural icon in our time. Ted Talks cover a large range of topics and some are
+      more widely viewed than others. We are curious to explore datasets of Ted Talks
+      to determine if it will reveal information about society or the times we live
+      in. It is also possible that we will not find anything that we can extrapolate
+      to be a reflection of our society but rather will simply learn more about what
+      people find interesting or entertaining and what they do not."),
+    
+    h2("Overview"),
+    p("From Ted.com’s launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+      "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
+      video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
+      any other individual at 9 videos. The most commented video was", em("Richard
+                                                                          Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
+    ),
+  img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
+      height = 360)
+  
+)
 
 #######################################################
 #Interactive Page 1 -----------------------------------------------------------
@@ -123,12 +157,12 @@ interactive_panel_three <- tabPanel(
 
 
 
-
 #######################################################
 ui <- fluidPage(
   includeCSS("style.css"),
   navbarPage(
-    "TED Talks",
+    img(src = "./imgs/logo.png",width = 65.4, height = 30.8),
+    intropanel,
     interactive_panel_one,
     interactive_panel_three
   )
