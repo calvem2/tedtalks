@@ -105,7 +105,7 @@ server <- function(input, output) {
   })
   
   # INTERACTIVE PAGE TWO PLOT(S)
-  output$lang_metrics <- renderggiraph({
+  output$lang_metrics <- renderPlot({
     current_met <- ted_word_metrics %>%
       filter(is.element(type_met, unlist(strsplit(input$language_metrics, " " )))) %>%
       group_by(type_met) %>%
