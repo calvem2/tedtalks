@@ -216,19 +216,19 @@ style_main_content <- mainPanel(
          categories for example, negative emotions would include the use of the 
          word sad. Hovering over the bubbles provides examples of words that fit
          into those categories"), 
-  tags$p("First,examining the chart of all the words we can see that 
-         the category focuspresent is the dominant one. This deals with the fact 
-         that many ted talks provide advice on how to improve your own life 
-         and thus the concept of living in the present is well represented. The
-         Word Group Affect Words is broken down into positive and negative 
-         emotions, with positive making up a larger portion. That is on brand
-         with our cultural perception of Ted Talks as inspiring videos. The 
-         Social grouping provides an interesting insight. Male References 
-         outnumber female references by 13,000. This could be because they are 
-         catering to a male audience or the speakers themselves are primarily 
-         male. This could be a perpetuation of male dominated society although
-         this is not supported empirically, rather, it is just a supposition.
-         Another stand out grouping was Personal Concerns, of which Work was
+  tags$p("First,examining the chart of", strong("all"), "the words we can see 
+         that the category", strong ("focuspresent"), "is the dominant one. This 
+         deals with the fact that many Ted Talks provide advice on how to 
+         improve your own life and thus the concept of living in the present is 
+         well represented. The word group", strong("Affect Words"), "is broken 
+         down into positive and negative emotions, with positive making up a 
+         larger portion. That is on brand with our cultural perception of Ted 
+         Talks as inspiring videos. The", strong("Social"), "grouping provides 
+         an interesting insight. Male References outnumber Female references by
+         13,000. This could be because they are catering to a male audience, 
+         the speakers themselves are primarily male or it reflects the male 
+         dominated societies that we still live in. Another stand out 
+         grouping was", strong("Personal Concerns"), "of which Work was
          by far the largest bubble. This needs to be investigated further, but
          a reasonable hypothesis for this is the competitive world we live in. 
          This type of data reflects what our culture is concerned with and a 
