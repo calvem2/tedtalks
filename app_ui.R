@@ -208,8 +208,31 @@ interactive_panel_three <- tabPanel(
 
 #######################################################
 #Summary Takeways Page
-
-
+summarypanel <- tabPanel(
+  "Summary",
+  mainPanel(
+    tags$h1("Summary of Data"),
+    tags$p("Our purpose for analyzing data on ted talks was multi-faceted. Ted
+          talks have become a part of our lives both academically and 
+          personally. Many of us have viewed ted talks in classrooms, for 
+          assignments and also just for our personal pleasure. Therefore we 
+          wanted to see if we could come to any conclusions about our culture or
+          our generations lives based in addition to simply satisfying a 
+          curiosity about what talks people find interesting."),
+    
+    tags$p("There were a few observations that we made that we found to be 
+           significant. In our analyzation of the video popularity we concluded
+           that the videos were appearing to decline in popularity but this was 
+           likely misleading due to Youtube providing an alternate platform
+           for viewership. Examination of Language Metrics revealed that verbs
+           were the most popular form of word used by a long shot. Based on 
+           the concept that Ted describes their videos as influential videos
+           we proposed that people view these talks for inspiration. These ted
+           talks are usually informative in nature and advise people how to 
+           take the right actions to achieve their goals so this seemed 
+           consistent with our expectations. Finally, we broke down the data by 
+           language style, which led us to the conclusion that ......."))
+)
 
 
 #######################################################
@@ -220,6 +243,7 @@ ui <- fluidPage(
     intropanel,
     interactive_panel_one,
     interactive_panel_two,
-    interactive_panel_three
+    interactive_panel_three,
+    summarypanel
   )
 )
