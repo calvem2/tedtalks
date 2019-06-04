@@ -5,7 +5,6 @@
 library(plotly)
 
 
-
 #######################################################
 #Summary Page
 intropanel <- tabPanel(
@@ -15,17 +14,7 @@ intropanel <- tabPanel(
     tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
     tags$p("Date: 6/5/2019"),
     
-    tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
-             height = 360),
-    
-    tags$h2("Overview"),
-    tags$p("From Ted.com’s launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
-           "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
-           video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
-           any other individual at 9 videos. The most commented video was", em("Richard
-           Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments."),
-    
-    tags$p(a("Our first data source", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
+    tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
       a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
       (which started in 1984) published on TED’s website as of", strong("September 21st, 2017."),
@@ -35,24 +24,6 @@ intropanel <- tabPanel(
       date, the ratings, the speaker occupation, the number views, and the name of the
       talk."),
     
-    tags$p(a("Our second dataset", href = "https://data.world/owentemple/ted-talks-complete-list?fbclid=IwAR0WWitDp6ZslAlDzum7qTS51928E-OdRK_0Hi8DgZLMWG4495XdBFqGj6Q"),
-      "is the most comprehensive one in our collection of
-      datasets about TEDTalks. The data comes from Ted.com, but was found on data.world and gives
-      information about TEDTalk up until June 13th, 2017, such as: a video
-      ID, video URL, speaker name, headline, description, film date,
-      event name, talk duration, and publishing date. It is unique in that
-      it has topic tags as well as a full English transcript. However, it
-      does not take into account different languages, but instead uses the
-      English transcript and variables from the website",
-      a("Linguistic Inquiry and Word Count (LIWC)", href = "http://liwc.wpengine.com/"),
-      "to determine the count of a", em("specific type of word"), "(eg. Positive).
-      We could use this data similarly, but also decide on what types of
-      messaging creates popular Ted Talks. Since this dataset is so
-      comprehensive, many of our questions could be answered with it.
-      Since it already filtered out specific words and word groups, we can
-      use it as a benchmark for our word analysis with the transcripts.csv
-      dataset."),
-    
     tags$p("Our group is interested in this domain because Ted Talks have become a
       cultural icon in our time. Ted Talks cover a large range of topics and some are
       more widely viewed than others. We are curious to explore datasets of Ted Talks
@@ -61,12 +32,15 @@ intropanel <- tabPanel(
       to be a reflection of our society but rather will simply learn more about what
       people find interesting or entertaining and what they do not."),
     
-    tags$h2("Major Questions"),
-    
-    tags$p("1. How did user interaction vary by year?"),
-    tags$p("2. What kind of Language was commonly used in Ted Talks?"),
-    tags$p("3. What types of words where commonly used for different categories?")
-    )
+    tags$h2("Overview"),
+    tags$p("From Ted.com’s launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+      "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
+      video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
+      any other individual at 9 videos. The most commented video was", em("Richard
+                                                                          Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
+    ),
+  tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
+      height = 360)
   
 )
 
@@ -80,9 +54,20 @@ cont_metrics <- list(
   "Comments" = "comments",
   "Languages Available" = "languages"
 )
-
+# set choices for viewership variables
+view_variables <- list(
+  "Duration (minutes)" = "duration_minutes",
+  "Languages Available" = "languages",
+  "Number of Speakers" = "num_speaker"
+)
 # Make sidebar with widgets for chart for overall interaction
-### ADD ME ###
+overall_sidebar_content <- sidebarPanel(
+  selectInput(
+    "viewership_variable",
+    label = "Variable of Interest",
+    choices = view_variables
+  )
+)
 
 # Make sidebar with widgets for chart by year
 year_sidebar_content <- sidebarPanel(
@@ -101,11 +86,30 @@ year_sidebar_content <- sidebarPanel(
 )
 
 # Make main panel for overall chart to be displayed
-### ADD ME ###
+overall_main_content <- mainPanel(
+  plotOutput("viewership_chart"),
+  tags$p("The purpose of the chart above is to investigate whether there is a 
+         relationship between certain variables and viewership of the talks. 
+         The user can select from duration of the video, languages it is 
+         available in, and the number of speakers.")
+)
 
 # Make main panel for year chart to be displayed
 year_main_content <- mainPanel(
-  plotlyOutput("metrics_by_year")
+  plotlyOutput("metrics_by_year"),
+  tags$p("The chart above allows the user to view four different metrics of 
+         interaction, Views, Duration, Comments and Languages by year. The 
+         general trend for this chart appears to show that the earlier years
+         (roughly before 2012) had what could be broadly stated as more 
+         interactions. The videos were recieving more views, being translated
+         into more languages and recieving more comments. The range of these
+         metrics by year became smaller with the exception of duration of 
+         the videos in minutes which appears to have no discernable trend. This
+         may lead one to the conclusion that Ted Talks are decreasing in
+         popularity, however we propose an alternative hypothesis that fits the
+         data. The data source for these metrics was Ted.com which likely began
+         losing viewers to Youtube as that became a more popular viewing
+         platform. ")
 )
 
 # Make first interactive tab
@@ -114,8 +118,11 @@ interactive_panel_one <- tabPanel(
   tags$h1("How do users interact with Ted Talk Videos?"),
   tags$hr(),
   # Chart one and widgets
-  tags$h2("Overall Interaction"),
-  ## ADD ME ##
+  tags$h2("Viewership Interaction"),
+  sidebarLayout(
+    overall_sidebar_content,
+    overall_main_content
+  ),
   # Chart two and widgets
   tags$h2("Interaction by Year"),
   sidebarLayout(
@@ -202,7 +209,15 @@ style_sidebar_content <- sidebarPanel(
 
 # Make main panel chart to be displayed
 style_main_content <- mainPanel(
-  ggiraphOutput("word_style")
+  ggiraphOutput("word_style"),
+  tags$p("The purpose of this chart is to provide an easy way to compare the
+         style of language being used in the Ted Talks by category. The dataset
+         we used provided a breakdown of the language style into various 
+         categories for example, negative emotions would include the use of the 
+         word sad. First,examining the chart of all the words we can see that 
+         the category focuspresent is a dominant one. This deals with the fact 
+         that many ted talks provide advice on how to improve your own life 
+         and thus the concept of living in the present is well represented.")
 )
 
 # Make 3rd interactive tab 
@@ -221,9 +236,31 @@ interactive_panel_three <- tabPanel(
 
 #######################################################
 #Summary Takeways Page
-
-
-
+summarypanel <- tabPanel(
+  "Summary",
+  mainPanel(
+    tags$h1("Summary of Data"),
+    tags$p("Our purpose for analyzing data on ted talks was multi-faceted. Ted
+          Talks have become a part of our lives both academically and 
+          personally. Many of us have viewed Ted Talks in classrooms, for 
+          assignments and also just for our personal pleasure. Therefore we 
+          wanted to see if we could come to any conclusions about our culture or
+          our generations lives based in addition to simply satisfying a 
+          curiosity about what talks people find interesting."),
+    
+    tags$p("There were a few observations that we made that we found to be 
+           significant. In our analyzation of the video popularity we concluded
+           that the videos were appearing to decline in popularity but this was 
+           likely misleading due to Youtube providing an alternate platform
+           for viewership. Examination of Language Metrics revealed that verbs
+           were the most popular form of word used by a long shot. Based on 
+           the concept that Ted describes their videos as influential videos
+           we proposed that people view these talks for inspiration. These ted
+           talks are usually informative in nature and advise people how to 
+           take the right actions to achieve their goals so this seemed 
+           consistent with our expectations. Finally, we broke down the data by 
+           language style, which led us to the conclusion that ......."))
+)
 
 
 #######################################################
@@ -234,6 +271,7 @@ ui <- fluidPage(
     intropanel,
     interactive_panel_one,
     interactive_panel_two,
-    interactive_panel_three
+    interactive_panel_three,
+    summarypanel
   )
 )
