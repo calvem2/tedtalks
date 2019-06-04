@@ -54,9 +54,20 @@ cont_metrics <- list(
   "Comments" = "comments",
   "Languages Available" = "languages"
 )
-
+# set choices for viewership variables
+view_variables <- list(
+  "Duration (minutes)" = "duration_minutes",
+  "Languages Available" = "languages",
+  "Number of Speakers" = "num_speaker"
+)
 # Make sidebar with widgets for chart for overall interaction
-### ADD ME ###
+overall_sidebar_content <- sidebarPanel(
+  selectInput(
+    "viewership_variable",
+    label = "Variable of Interest",
+    choices = view_variables
+  )
+)
 
 # Make sidebar with widgets for chart by year
 year_sidebar_content <- sidebarPanel(
@@ -75,7 +86,13 @@ year_sidebar_content <- sidebarPanel(
 )
 
 # Make main panel for overall chart to be displayed
-### ADD ME ###
+overall_main_content <- mainPanel(
+  plotOutput("viewership_chart"),
+  tags$p("The purpose of the chart above is to investigate whether there is a 
+         relationship between certain variables and viewership of the talks. 
+         The user can select from duration of the video, languages it is 
+         available in, and the number of speakers.")
+)
 
 # Make main panel for year chart to be displayed
 year_main_content <- mainPanel(
@@ -101,8 +118,11 @@ interactive_panel_one <- tabPanel(
   tags$h1("How do users interact with Ted Talk Videos?"),
   tags$hr(),
   # Chart one and widgets
-  tags$h2("Overall Interaction"),
-  ## ADD ME ##
+  tags$h2("Viewership Interaction"),
+  sidebarLayout(
+    overall_sidebar_content,
+    overall_main_content
+  ),
   # Chart two and widgets
   tags$h2("Interaction by Year"),
   sidebarLayout(
@@ -221,8 +241,8 @@ summarypanel <- tabPanel(
   mainPanel(
     tags$h1("Summary of Data"),
     tags$p("Our purpose for analyzing data on ted talks was multi-faceted. Ted
-          talks have become a part of our lives both academically and 
-          personally. Many of us have viewed ted talks in classrooms, for 
+          Talks have become a part of our lives both academically and 
+          personally. Many of us have viewed Ted Talks in classrooms, for 
           assignments and also just for our personal pleasure. Therefore we 
           wanted to see if we could come to any conclusions about our culture or
           our generations lives based in addition to simply satisfying a 
