@@ -70,6 +70,34 @@ ted_word_styles <- ted_lang %>%
   group_by(type) %>% 
   summarise(word_count = sum(word_count, na.rm = TRUE))
 
+# Add example words and alterante names to data
+alt_names <- c("Achievement", "Affiliation", "Assent", "Body", "Causation",
+               "Certainty", "Death", "Differentiation", "Discrepancy", "Family",
+               "Feel", "Female References", "Fillers", "Future Focus",
+               "Past Focus", "Present Focus", "Friends", "Health", "Hear",
+               "Home", "Ingestion", "Insight", "Leisure", "Male References",
+               "Money", "Motion", "Negative Emotions", "Netspeak",
+               "Nonfluencies", "Positive Emotions", "Power", "Religion",
+               "Reward", "Risk", "See", "Sexual", "Space", "Swear Words",
+               "Tentative", "Time", "Work")
+examples <- c("win, success, better", "ally, friend, social", "agree, OK, yes",
+              "cheek, hands, spit", "because, effect", "always, never",
+              "bury, coffin, kill", "hasn&#39t, but, else", "should, would",
+              "daughter, dad, aunt", "feels, touch", "girl, her, mom",
+              "Imean, youknow", "may, will, soon", "ago, did, talked",
+              "today, is, now", "buddy, neighbor", "clinic, flu, pill",
+              "listen, hearing", "kitchen, landlord", "dish, eat, pizza",
+              "think, know", "cook, chat, movie", "boy, his, dad",
+              "audit, cash, owe", "arrive, car, go", "hurt, ugly, nasty",
+              "btw, lol, thx", "er, hm, umm", "love, nice, sweet",
+              "superior, bully", "altar, church", "take, prize, benefit",
+              "danger, doubt", "view, saw, seen", "love, incest",
+              "down, in, thin", "fuck, damn, shit", "maybe, perhaps",
+              "end, until, season", "jobs, majors, xerox")
+
+ted_word_styles$alt_name <- alt_names
+ted_word_styles$example <- examples
+
 # Convert Word Metrics from percent to WC
 ted_word_metrics <- ted_lang %>%
   mutate(ppron = perc_to_wc(ppron), ipron = perc_to_wc(ipron),
@@ -129,7 +157,9 @@ server <- function(input, output) {
     styles <- unlist(strsplit(input$style_group, " "))
     current <- ted_word_styles %>%
       filter(is.element(type, styles))
-    current$text = paste(current$type, "\n", current$word_count, "words")
+    current$text = paste(current$alt_name,
+                         "\nExamples:",current$example,
+                         "\nTotal Words:", current$word_count)
     packing <- circleProgressiveLayout(current$word_count,
                                         sizetype = "area")
     current = cbind(current, packing)
@@ -137,9 +167,9 @@ server <- function(input, output) {
     
     # Set text size for plot
     max_bubbles <- nrow(ted_word_styles)
-    text_size = 3
+    text_size = 2
     if (length(styles) != max_bubbles) {
-      text_size <- 6
+      text_size <- 5
     }
     
     # Make plot
@@ -148,8 +178,7 @@ server <- function(input, output) {
       geom_polygon_interactive(data = current.gg, aes(x, y, group = id, fill=id, tooltip = current$text[id], data_id = id), colour = "black", alpha = 0.6) +
       scale_fill_viridis() +
       # Add text in the center of each bubble + control its size
-      geom_text(data = current, aes(x, y, label = type), size = text_size, color = "black") +
-      #scale_size_continuous(range = size_range) +
+      geom_text(data = current, aes(x, y, label = alt_name), size = text_size, color = "black") +
       # General theme:
       theme_void() + 
       theme(legend.position="none", plot.margin = unit(c(0,0,0,0), "cm")) +
