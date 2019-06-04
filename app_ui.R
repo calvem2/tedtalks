@@ -154,10 +154,10 @@ lang_met_main_content <- mainPanel(
     better understand how information is transferred from individual
     to another efficiently."),
   tags$p("When reviewing the plots we can see that talks contain
-         significantly more prepositions and verbs. This is likely
-         connected to the purpose of talks. Inspiration and calls
-         to action are common in many talks therefore it makes sense
-         that these language types are the most common.")
+    significantly more prepositions and verbs. This is likely
+    connected to the purpose of talks. Inspiration and calls
+    to action are common in many talks therefore it makes sense
+    that these language types are the most common.")
 )
 
 # Create second Interactive Tab
