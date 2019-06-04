@@ -17,10 +17,10 @@ intropanel <- tabPanel(
     tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
       a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
-      (which started in 1984) published on TED’s website as of", strong("September 21st, 2017."),
+      (which started in 1984) published on TED's website as of", strong("September 21st, 2017."),
       "It contains data such as: the number of comments, a brief description, duration
       of the talk, where the event took place, the number of languages the talk is in,
-      the film date, the main speaker’s name, the number of speakers, the publishing
+      the film date, the main speaker's name, the number of speakers, the publishing
       date, the ratings, the speaker occupation, the number views, and the name of the
       talk."),
     
@@ -33,7 +33,7 @@ intropanel <- tabPanel(
       people find interesting or entertaining and what they do not."),
     
     tags$h2("Overview"),
-    tags$p("From Ted.com’s launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
       "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
       video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
       any other individual at 9 videos. The most commented video was", em("Richard
@@ -214,10 +214,30 @@ style_main_content <- mainPanel(
          style of language being used in the Ted Talks by category. The dataset
          we used provided a breakdown of the language style into various 
          categories for example, negative emotions would include the use of the 
-         word sad. First,examining the chart of all the words we can see that 
-         the category focuspresent is a dominant one. This deals with the fact 
-         that many ted talks provide advice on how to improve your own life 
-         and thus the concept of living in the present is well represented.")
+         word sad. Hovering over the bubbles provides examples of words that fit
+         into those categories"), 
+  tags$p("First,examining the chart of", strong("all"), "the words we can see 
+         that the category", strong ("focuspresent"), "is the dominant one. This 
+         deals with the fact that many Ted Talks provide advice on how to 
+         improve your own life and thus the concept of living in the present is 
+         well represented. The word group", strong("Affect Words"), "is broken 
+         down into positive and negative emotions, with positive making up a 
+         larger portion. That is on brand with our cultural perception of Ted 
+         Talks as inspiring videos. The", strong("Social"), "grouping provides 
+         an interesting insight. Male References outnumber Female references by
+         13,000. This could be because they are catering to a male audience, 
+         the speakers themselves are primarily male or it reflects the male 
+         dominated societies that we still live in. Another stand out 
+         grouping was", strong("Personal Concerns"), "of which Work was
+         by far the largest bubble. This needs to be investigated further, but
+         a reasonable hypothesis for this is the competitive world we live in. 
+         This type of data reflects what our culture is concerned with and a 
+         reality of that is the intense pressure we are under to succeed in our
+         work lives."),
+  tags$p("The many options for word groupings provide multiple incites to be 
+         gathered. The groups examined above had standout data although there
+         are more hypotheses that could likely be generated from every grouping.
+         ")
 )
 
 # Make 3rd interactive tab 

@@ -21,6 +21,11 @@ h2 {
   color: white;
 }
 
+a:focus, a:visited {
+  color: #800080 !important;
+  text-decoration: none;
+}
+
 /* styles widgets */
 .well {
   background-color: #1C1E21;
