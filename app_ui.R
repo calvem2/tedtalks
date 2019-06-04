@@ -54,9 +54,20 @@ cont_metrics <- list(
   "Comments" = "comments",
   "Languages Available" = "languages"
 )
-
+# set choices for viewership variables
+view_variables <- list(
+  "Duration (minutes)" = "duration_minutes",
+  "Languages Available" = "languages",
+  "Number of Speakers" = "num_speaker"
+)
 # Make sidebar with widgets for chart for overall interaction
-### ADD ME ###
+overall_sidebar_content <- sidebarPanel(
+  selectInput(
+    "viewership_variable",
+    label = "Variable of Interest",
+    choices = view_variables
+  )
+)
 
 # Make sidebar with widgets for chart by year
 year_sidebar_content <- sidebarPanel(
@@ -75,11 +86,30 @@ year_sidebar_content <- sidebarPanel(
 )
 
 # Make main panel for overall chart to be displayed
-### ADD ME ###
+overall_main_content <- mainPanel(
+  plotOutput("viewership_chart"),
+  tags$p("The purpose of the chart above is to investigate whether there is a 
+         relationship between certain variables and viewership of the talks. 
+         The user can select from duration of the video, languages it is 
+         available in, and the number of speakers.")
+)
 
 # Make main panel for year chart to be displayed
 year_main_content <- mainPanel(
-  plotlyOutput("metrics_by_year")
+  plotlyOutput("metrics_by_year"),
+  tags$p("The chart above allows the user to view four different metrics of 
+         interaction, Views, Duration, Comments and Languages by year. The 
+         general trend for this chart appears to show that the earlier years
+         (roughly before 2012) had what could be broadly stated as more 
+         interactions. The videos were recieving more views, being translated
+         into more languages and recieving more comments. The range of these
+         metrics by year became smaller with the exception of duration of 
+         the videos in minutes which appears to have no discernable trend. This
+         may lead one to the conclusion that Ted Talks are decreasing in
+         popularity, however we propose an alternative hypothesis that fits the
+         data. The data source for these metrics was Ted.com which likely began
+         losing viewers to Youtube as that became a more popular viewing
+         platform. ")
 )
 
 # Make first interactive tab
@@ -88,8 +118,11 @@ interactive_panel_one <- tabPanel(
   tags$h1("How do users interact with Ted Talk Videos?"),
   tags$hr(),
   # Chart one and widgets
-  tags$h2("Overall Interaction"),
-  ## ADD ME ##
+  tags$h2("Viewership Interaction"),
+  sidebarLayout(
+    overall_sidebar_content,
+    overall_main_content
+  ),
   # Chart two and widgets
   tags$h2("Interaction by Year"),
   sidebarLayout(
@@ -128,10 +161,10 @@ lang_met_main_content <- mainPanel(
     better understand how information is transferred from individual
     to another efficiently."),
   tags$p("When reviewing the plots we can see that talks contain
-         significantly more prepositions and verbs. This is likely
-         connected to the purpose of talks. Inspiration and calls
-         to action are common in many talks therefore it makes sense
-         that these language types are the most common.")
+    significantly more prepositions and verbs. This is likely
+    connected to the purpose of talks. Inspiration and calls
+    to action are common in many talks therefore it makes sense
+    that these language types are the most common.")
 )
 
 # Create second Interactive Tab
@@ -176,7 +209,15 @@ style_sidebar_content <- sidebarPanel(
 
 # Make main panel chart to be displayed
 style_main_content <- mainPanel(
-  ggiraphOutput("word_style")
+  ggiraphOutput("word_style"),
+  tags$p("The purpose of this chart is to provide an easy way to compare the
+         style of language being used in the Ted Talks by category. The dataset
+         we used provided a breakdown of the language style into various 
+         categories for example, negative emotions would include the use of the 
+         word sad. First,examining the chart of all the words we can see that 
+         the category focuspresent is a dominant one. This deals with the fact 
+         that many ted talks provide advice on how to improve your own life 
+         and thus the concept of living in the present is well represented.")
 )
 
 # Make 3rd interactive tab 
@@ -195,9 +236,31 @@ interactive_panel_three <- tabPanel(
 
 #######################################################
 #Summary Takeways Page
-
-
-
+summarypanel <- tabPanel(
+  "Summary",
+  mainPanel(
+    tags$h1("Summary of Data"),
+    tags$p("Our purpose for analyzing data on ted talks was multi-faceted. Ted
+          Talks have become a part of our lives both academically and 
+          personally. Many of us have viewed Ted Talks in classrooms, for 
+          assignments and also just for our personal pleasure. Therefore we 
+          wanted to see if we could come to any conclusions about our culture or
+          our generations lives based in addition to simply satisfying a 
+          curiosity about what talks people find interesting."),
+    
+    tags$p("There were a few observations that we made that we found to be 
+           significant. In our analyzation of the video popularity we concluded
+           that the videos were appearing to decline in popularity but this was 
+           likely misleading due to Youtube providing an alternate platform
+           for viewership. Examination of Language Metrics revealed that verbs
+           were the most popular form of word used by a long shot. Based on 
+           the concept that Ted describes their videos as influential videos
+           we proposed that people view these talks for inspiration. These ted
+           talks are usually informative in nature and advise people how to 
+           take the right actions to achieve their goals so this seemed 
+           consistent with our expectations. Finally, we broke down the data by 
+           language style, which led us to the conclusion that ......."))
+)
 
 
 #######################################################
@@ -208,6 +271,7 @@ ui <- fluidPage(
     intropanel,
     interactive_panel_one,
     interactive_panel_two,
-    interactive_panel_three
+    interactive_panel_three,
+    summarypanel
   )
 )

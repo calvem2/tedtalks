@@ -115,6 +115,14 @@ ted_word_metrics <- ted_lang %>%
 # Create server ---------------------------------------------------------------
 server <- function(input, output) {
   # INTERACTIVE PAGE ONE PLOT(S)
+  output$viewership_chart <- renderPlot({
+    v <- ggplot(ted_main) + 
+      geom_point(aes_string(x = input$viewership_variable, y = "views"),alpha = 0.2) +
+      labs(title = paste(input$viewership_variable, "vs. Viewership"))+
+      xlab(input$viewership_variable) +
+      ylab("Number of Views")
+    v
+  })
   # Render plotly chart of distribution of views, comments, etc., by year
   output$metrics_by_year <- renderPlotly({
     p <- ggplot(ted_main) +
