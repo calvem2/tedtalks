@@ -64,6 +64,11 @@ h2 {
 
 }
 
+a:focus, a:visited {
+  color: #800080 !important;
+  text-decoration: none;
+}
+
 /* styles widgets */
 .well {
   /* background-color: INSERT COLOR OR HEX CODE; */
