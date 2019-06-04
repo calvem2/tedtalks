@@ -189,7 +189,15 @@ style_sidebar_content <- sidebarPanel(
 
 # Make main panel chart to be displayed
 style_main_content <- mainPanel(
-  ggiraphOutput("word_style")
+  ggiraphOutput("word_style"),
+  tags$p("The purpose of this chart is to provide an easy way to compare the
+         style of language being used in the Ted Talks by category. The dataset
+         we used provided a breakdown of the language style into various 
+         categories for example, negative emotions would include the use of the 
+         word sad. First,examining the chart of all the words we can see that 
+         the category focuspresent is a dominant one. This deals with the fact 
+         that many ted talks provide advice on how to improve your own life 
+         and thus the concept of living in the present is well represented.")
 )
 
 # Make 3rd interactive tab 
