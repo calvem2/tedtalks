@@ -17,10 +17,10 @@ intropanel <- tabPanel(
     tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
       a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
-      (which started in 1984) published on TED’s website as of", strong("September 21st, 2017."),
+      (which started in 1984) published on TED's website as of", strong("September 21st, 2017."),
       "It contains data such as: the number of comments, a brief description, duration
       of the talk, where the event took place, the number of languages the talk is in,
-      the film date, the main speaker’s name, the number of speakers, the publishing
+      the film date, the main speaker's name, the number of speakers, the publishing
       date, the ratings, the speaker occupation, the number views, and the name of the
       talk."),
     
@@ -33,7 +33,7 @@ intropanel <- tabPanel(
       people find interesting or entertaining and what they do not."),
     
     tags$h2("Overview"),
-    tags$p("From Ted.com’s launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
       "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
       video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
       any other individual at 9 videos. The most commented video was", em("Richard
