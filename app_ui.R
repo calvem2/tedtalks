@@ -292,18 +292,21 @@ interactive_panel_three <- tabPanel(
 summarypanel <- tabPanel(
   "Conclusion",
   mainPanel(
-    tags$h1("Notable Insights"),
+    tags$h1("Three Notable Insights"),
     tags$p("Our purpose for analyzing data on Ted Talks was multi-faceted. Ted
           Talks have become a part of our lives both academically and 
           personally. Many of us have viewed Ted Talks in classrooms, for 
           assignments and also just for our personal pleasure. Therefore, we 
           wanted to see if we could come to any conclusions about our culture or
           our generation in addition to simply satisfying a curiosity about what
-          talks people find interesting. The primary conclusion we can draw from
-          the dataset is than that Ted Talks do appear to be fulfilling a need 
-          for inspiration among people. Delving further into detail we can 
-          see reasons for why people might be seeking sources of inspiration.
-          "),
+          talks people find interesting. The three major takeaways we can draw 
+          from the dataset are that"), 
+    tags$p("(1) There has been a decrease in the number of views Ted Talks are 
+           recieving on Ted.com"),
+    tags$p("(2) Ted Talks on average contain significantly more prepositions and 
+            verbs than other word types"),
+    tags$p("(3) The most prevalent language styles are what we expected for Ted
+            Talks and a reflection of people's interests."), 
     tags$h1("Data to Support Insights"),
     tags$p("Examining the graph of Language Metrics revealed that verbs
            were the most popular form of word used by a long shot. Based on 
@@ -311,13 +314,13 @@ summarypanel <- tabPanel(
            we proposed that people view these talks for inspiration. These Ted
            Talks are usually informative in nature and advise people how to 
            take the right actions to achieve their goals so this seemed 
-           consistent with our expectations. Additionally, we broke down the 
-           data by language style and used an interactive plot to help represent
-           the styles by category. The disparity in size of the circles clearly
-           represents that a few styles were dominant with positive language 
-           and work centered language being two significant outliers."),
+           consistent with our expectations. Next we analyzed the Language Style 
+           graph, where we used an interactive plot to help represent the 
+           language styles by category. The disparity in size of the circles 
+           clearly represents that a few styles were dominant with positive 
+           language and work centered language being two significant outliers."),
     tags$h1("Sucessful Ted Talks"),
-    tags$p("While vieweres tend to interact with videos less than they did before
+    tags$p("While viewers tend to interact with videos less than they did before
            2012, our data supports that there is a positive interation between
            the amount of language a video is offered in and the amount of
            interacions with the video. We also saw that it was most common for
