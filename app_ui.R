@@ -1,11 +1,11 @@
 # Ted Talks Final
 # app_ui.R script for our Shiny App
 
-# Load libraries --------------------------------------------------------------
+# Load libraries ---------------------------------------------------------------
 library(plotly)
 
 
-#######################################################
+################################################################################
 #Summary Page
 intropanel <- tabPanel(
   "Project Overview",
@@ -13,6 +13,15 @@ intropanel <- tabPanel(
     tags$h1("What Makes a Ted Talk Tick?"),
     tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
     tags$p("Date: 6/5/2019"),
+    
+    
+    tags$h2("Overview"),
+    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+      "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
+      video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
+      any other individual at 9 videos. The most commented video was", em("Richard
+      Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
+    ),
     
     tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
              height = 360),
@@ -34,15 +43,12 @@ intropanel <- tabPanel(
       in. It is also possible that we will not find anything that we can extrapolate
       to be a reflection of our society but rather will simply learn more about what
       people find interesting or entertaining and what they do not."),
-    
-    tags$h2("Overview"),
-    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
-      "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
-      video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
-      any other individual at 9 videos. The most commented video was", em("Richard
-                                                                          Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
-    )
   
+    tags$h2("General Questions"),
+    tags$p("What variables had the biggest effect on viewership?"),
+    tags$p("How did viewership vary by year?"),
+    tags$p("Which types of speech were most commonnly used"),
+    tags$p("Which were the most common word types used?")
   
   
 )
@@ -52,16 +58,16 @@ intropanel <- tabPanel(
 
 # Set choices for continuous varibale to be plotted
 cont_metrics <- list(
-  "Views" = "views",
-  "Duration (minutes)" = "duration_minutes",
-  "Comments" = "comments",
-  "Languages Available" = "languages"
+  "Views" = "Views",
+  "Duration (minutes)" = "Duration",
+  "Comments" = "Comments",
+  "Languages Available" = "Languages"
 )
 # set choices for viewership variables
 view_variables <- list(
-  "Duration (minutes)" = "duration_minutes",
-  "Languages Available" = "languages",
-  "Number of Speakers" = "num_speaker"
+  "Duration (minutes)" = "Duration",
+  "Languages Available" = "Languages",
+  "Number of Speakers" = "NumberOfSpeakers"
 )
 # Make sidebar with widgets for chart for overall interaction
 overall_sidebar_content <- sidebarPanel(
@@ -173,7 +179,7 @@ lang_met_main_content <- mainPanel(
 # Create second Interactive Tab
 interactive_panel_two <- tabPanel(
   "Language Metrics",
-  tags$h1("What words are used in Ted Talks?"),
+  tags$h1("What Types of Speech Are Used in Ted Talks?"),
   tags$hr(),
   sidebarLayout(
     lang_met_main_content,
