@@ -115,9 +115,16 @@ ted_word_metrics <- ted_lang %>%
 # Create server ---------------------------------------------------------------
 server <- function(input, output) {
   # INTERACTIVE PAGE ONE PLOT(S)
+  colnames(ted_main)[colnames(ted_main)=="duration_minutes"] <- "Duration"
+  colnames(ted_main)[colnames(ted_main)=="languages"] <- "Languages"
+  colnames(ted_main)[colnames(ted_main)=="num_speaker"] <- "NumberOfSpeakers"
+  colnames(ted_main)[colnames(ted_main)=="comments"] <- "Comments"
+  colnames(ted_main)[colnames(ted_main)=="views"] <- "Views"
+  
+  
   output$viewership_chart <- renderPlot({
     v <- ggplot(ted_main) + 
-      geom_point(aes_string(x = input$viewership_variable, y = "views"),alpha = 0.2) +
+      geom_point(aes_string(x = input$viewership_variable, y = "Views"),alpha = 0.2) +
       labs(title = paste(input$viewership_variable, "vs. Viewership"))+
       xlab(input$viewership_variable) +
       ylab("Number of Views")
@@ -134,7 +141,7 @@ server <- function(input, output) {
         breaks = pretty(ted_main[, input$year_metric]),
         labels = comma
       ) +
-      labs(title = paste(input$year_metric, "by year")) +
+      labs(title = paste(input$year_metric, "by Year")) +
       xlab("Year Published") +
       ylab(input$year_metric) +
       theme(plot.title = element_text(hjust = 0.5))
@@ -183,7 +190,9 @@ server <- function(input, output) {
     # Make plot
     p <- ggplot() + 
       # Make the bubbles
-      geom_polygon_interactive(data = current.gg, aes(x, y, group = id, fill=id, tooltip = current$text[id], data_id = id), colour = "black", alpha = 0.6) +
+      geom_polygon_interactive(data = current.gg, aes(x, y, group = id, fill=id,
+                                      tooltip = current$text[id], data_id = id),
+                                      colour = "black", alpha = 0.6) +
       scale_fill_viridis() +
       # Add text in the center of each bubble + control its size
       geom_text(data = current, aes(x, y, label = alt_name), size = text_size, color = "black") +
