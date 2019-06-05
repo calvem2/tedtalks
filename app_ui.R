@@ -14,19 +14,19 @@ intropanel <- tabPanel(
     tags$h1("What Makes a Ted Talk Tick?"),
     tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
     tags$p("Date: 6/5/2019"),
-    
-    
+
+
     tags$h2("Overview"),
-    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson's"),
       "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
       video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
       any other individual at 9 videos. The most commented video was", em("Richard
       Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
     ),
-    
+
     tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
              height = 360),
-    
+
     tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
       a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
@@ -36,7 +36,7 @@ intropanel <- tabPanel(
       the film date, the main speaker's name, the number of speakers, the publishing
       date, the ratings, the speaker occupation, the number views, and the name of the
       talk."),
-    
+
     tags$p("Our group is interested in this domain because Ted Talks have become a
       cultural icon in our time. Ted Talks cover a large range of topics and some are
       more widely viewed than others. We are curious to explore datasets of Ted Talks
@@ -44,14 +44,14 @@ intropanel <- tabPanel(
       in. It is also possible that we will not find anything that we can extrapolate
       to be a reflection of our society but rather will simply learn more about what
       people find interesting or entertaining and what they do not."),
-  
+
     tags$h2("General Questions"),
     tags$p("Which variables had the biggest effect on viewership?"),
     tags$p("How did viewership vary by year?"),
     tags$p("Which types of speech were most commonnly used?"),
     tags$p("Which were the most common word types used?")
-  
-  
+
+
 )
 
 #######################################################
@@ -98,42 +98,42 @@ year_sidebar_content <- sidebarPanel(
 # Make main panel for overall chart to be displayed
 overall_main_content <- mainPanel(
   plotOutput("viewership_chart"),
-  tags$p("The purpose of the chart above is to investigate whether there is a 
-         relationship between certain variables and viewership of the talks. 
-         The user can select from duration of the video, languages it is 
+  tags$p("The purpose of the chart above is to investigate whether there is a
+         relationship between certain variables and viewership of the talks.
+         The user can select from duration of the video, languages it is
          available in, and the number of speakers."),
   tags$p("The major takeaway from this visualization is that there does appear
-         to be a correlation between both the number of languages that a talk has 
-         been translated into and the duration of the talk with the number of 
-         views it recieves. This is not surprising since popular videos likely 
-         get translated more as they are seen by more people who then wish for 
-         others to see it. Additionally the videos with more translations will 
+         to be a correlation between both the number of languages that a talk has
+         been translated into and the duration of the talk with the number of
+         views it recieves. This is not surprising since popular videos likely
+         get translated more as they are seen by more people who then wish for
+         others to see it. Additionally the videos with more translations will
          get seen more as people can access and undestand it from all over the
          world. The third variable we checked for a relatioship with the number
-         of views was the number of speakers. There did not appear to be a 
+         of views was the number of speakers. There did not appear to be a
          strong relationship there.")
 )
 
 # Make main panel for year chart to be displayed
 year_main_content <- mainPanel(
   plotlyOutput("metrics_by_year"),
-  tags$p("The purpose of the chart was to answer the question of if there is a 
+  tags$p("The purpose of the chart was to answer the question of if there is a
          relationship between the year a ted talk was given and the interations
          it receives with viewers."),
-  tags$p("The chart above allows the user to view four different metrics of 
-         interaction, Views, Duration, Comments and Languages by year. The 
+  tags$p("The chart above allows the user to view four different metrics of
+         interaction, Views, Duration, Comments and Languages by year. The
          general trend for this chart appears to show that the earlier years
-         (roughly before 2012) had what could be broadly stated as more 
+         (roughly before 2012) had what could be broadly stated as more
          interactions. The videos were recieving more views, being translated
          into more languages and recieving more comments. The range of these
-         metrics by year became smaller with the exception of duration of 
+         metrics by year became smaller with the exception of duration of
          the videos in minutes which appears to have no discernable trend. This
          may lead one to the conclusion that Ted Talks are decreasing in
          popularity, however we propose an alternative hypothesis that fits the
          data. The data source for these metrics was Ted.com which likely began
          losing viewers to Youtube as that became a more popular viewing
          platform. "),
-  tags$p("The major takeaway from this chart is that in the earlier years 
+  tags$p("The major takeaway from this chart is that in the earlier years
          appear to be more popular for Ted Talks, however, given context of the
          time period we are aware that the rise of a competitor likely played a
          part in this. The question that we attempted to answer with this data
@@ -183,11 +183,12 @@ lang_met_main_content <- mainPanel(
   plotOutput("lang_metrics"),
   tags$p("This plot shows the language metrics for two different categories
     of metrics. The first category, Function Words, includes
-    personal pronouns, impersonal pronouns, articles, prepositions,
-    auxiliary verbs, common adverbs, conjunctions and negations. 
-    The second category, Grammar Types, includes regular verbs,
-    adjectives, comparatives, interrogatives, numbers and quantifiers.
-    Using this data we can better understand the sentence structure in 
+    personal pronouns ", strong("(ppron),"), " impersonal pronouns ",  strong("(ipron),"), " articles ", strong("(article),"), " prepositions ", strong("(prep),"),
+    " auxiliary verbs ", strong("(auxverb),"), " common adverbs ", strong("(adverb),"), " conjunctions ", strong("(conj),"), " and negations ", strong("(negate)."),
+    " The second category, Grammar Types, includes regular verbs", strong("(verb),"),
+    " adjectives ", strong("(adj),"), " comparatives ", strong("(compare),"), " interrogatives ", strong("(interrog),"), " numbers ", strong("(number)"), " and quantifiers ",
+    strong("(quant)."),
+    "Using this data we can better understand the sentence structure in
     successful Ted Talks. Additionally, this information can help us
     better understand how information is transferred from individual
     to another efficiently."),
@@ -208,7 +209,7 @@ interactive_panel_two <- tabPanel(
     lang_met_sidebar_content
   )
 )
- 
+
 
 
 #######################################################
@@ -242,38 +243,38 @@ style_sidebar_content <- sidebarPanel(
 style_main_content <- mainPanel(
   ggiraphOutput("word_style"),
   tags$p("The purpose of this chart is to provide an easy way to compare the
-         style of language being used in the Ted Talks by category. This should 
+         style of language being used in the Ted Talks by category. This should
          allow us to answer the question of what style of language is being used
-         in Ted Talks and why it might be that certain styles predominate. The 
-         dataset we used provided a breakdown of the language style into various 
-         categories for example, negative emotions would include the use of the 
+         in Ted Talks and why it might be that certain styles predominate. The
+         dataset we used provided a breakdown of the language style into various
+         categories for example, negative emotions would include the use of the
          word sad. Hovering over the bubbles provides examples of words that fit
-         into those categories"), 
-  tags$p("First, examining the chart of", strong("all"), "the words we can see 
-         that the category focuspresent is the dominant one. This 
-         deals with the fact that many Ted Talks provide advice on how to 
-         improve your own life and thus the concept of living in the present is 
-         well represented. The word group", strong("Affect Words"), "is broken 
-         down into positive and negative emotions, with positive making up a 
-         larger portion. That is on brand with our cultural perception of Ted 
-         Talks as inspiring videos. The", strong("Social"), "grouping provides 
+         into those categories"),
+  tags$p("First, examining the chart of", strong("all"), "the words we can see
+         that the category focuspresent is the dominant one. This
+         deals with the fact that many Ted Talks provide advice on how to
+         improve your own life and thus the concept of living in the present is
+         well represented. The word group", strong("Affect Words"), "is broken
+         down into positive and negative emotions, with positive making up a
+         larger portion. That is on brand with our cultural perception of Ted
+         Talks as inspiring videos. The", strong("Social"), "grouping provides
          an interesting insight. Male References outnumber Female references by
-         13,000. This could be because they are catering to a male audience, 
-         the speakers themselves are primarily male or it reflects the male 
-         dominated societies that we still live in. Another stand out 
+         13,000. This could be because they are catering to a male audience,
+         the speakers themselves are primarily male or it reflects the male
+         dominated societies that we still live in. Another stand out
          grouping was", strong("Personal Concerns"), "of which Work was
          by far the largest bubble. This needs to be investigated further, but
-         a reasonable hypothesis for this is the competitive world we live in. 
-         This type of data reflects what our culture is concerned with and a 
+         a reasonable hypothesis for this is the competitive world we live in.
+         This type of data reflects what our culture is concerned with and a
          reality of that is the intense pressure we are under to succeed in our
          work lives."),
   tags$p("The overall takeaway from this chart is the language styles reflect
-         what people are interested in. Our chart tells us that is  primarily 
+         what people are interested in. Our chart tells us that is  primarily
          positive emotions, work and a focus on the present.
          ")
 )
 
-# Make 3rd interactive tab 
+# Make 3rd interactive tab
 interactive_panel_three <- tabPanel(
   "Language Style",
   tags$h1("What Kind of Language is Used in TED Talks?"),
@@ -294,30 +295,30 @@ summarypanel <- tabPanel(
   mainPanel(
     tags$h1("Three Notable Insights"),
     tags$p("Our purpose for analyzing data on Ted Talks was multi-faceted. Ted
-          Talks have become a part of our lives both academically and 
-          personally. Many of us have viewed Ted Talks in classrooms, for 
-          assignments and also just for our personal pleasure. Therefore, we 
+          Talks have become a part of our lives both academically and
+          personally. Many of us have viewed Ted Talks in classrooms, for
+          assignments and also just for our personal pleasure. Therefore, we
           wanted to see if we could come to any conclusions about our culture or
           our generation in addition to simply satisfying a curiosity about what
-          talks people find interesting. The three major takeaways we can draw 
-          from the dataset are that"), 
-    tags$p("(1) There has been a decrease in the number of views Ted Talks are 
+          talks people find interesting. The three major takeaways we can draw
+          from the dataset are that"),
+    tags$p("(1) There has been a decrease in the number of views Ted Talks are
            recieving on Ted.com"),
-    tags$p("(2) Ted Talks on average contain significantly more prepositions and 
+    tags$p("(2) Ted Talks on average contain significantly more prepositions and
             verbs than other word types"),
     tags$p("(3) The most prevalent language styles are what we expected for Ted
-            Talks and a reflection of people's interests."), 
+            Talks and a reflection of people's interests."),
     tags$h1("Data to Support Insights"),
     tags$p("Examining the graph of Language Metrics revealed that verbs
-           were the most popular form of word used by a long shot. Based on 
+           were the most popular form of word used by a long shot. Based on
            the concept that Ted describes their videos as influential videos
            we proposed that people view these talks for inspiration. These Ted
-           Talks are usually informative in nature and advise people how to 
-           take the right actions to achieve their goals so this seemed 
-           consistent with our expectations. Next we analyzed the Language Style 
-           graph, where we used an interactive plot to help represent the 
-           language styles by category. The disparity in size of the circles 
-           clearly represents that a few styles were dominant with positive 
+           Talks are usually informative in nature and advise people how to
+           take the right actions to achieve their goals so this seemed
+           consistent with our expectations. Next we analyzed the Language Style
+           graph, where we used an interactive plot to help represent the
+           language styles by category. The disparity in size of the circles
+           clearly represents that a few styles were dominant with positive
            language and work centered language being two significant outliers."),
     tags$h1("Sucessful Ted Talks"),
     tags$p("While viewers tend to interact with videos less than they did before
@@ -326,14 +327,14 @@ summarypanel <- tabPanel(
            interacions with the video. We also saw that it was most common for
            videos to have a single speaker and wer shorter than 25 minutes."),
     tags$h1("Broader Implications"),
-    tags$p("The broader implications of our findings are that there in theory 
+    tags$p("The broader implications of our findings are that there in theory
            should be a driving force that is leading people to seek out this 
            source of positivity. This could be the stressful lives that we live
-           or simply that humans are hard wired to seek out things that will 
+           or simply that humans are hard wired to seek out things that will
            bring us pleasure, inspiration being one of them. Considering that
            work centered language, focus on the present, and positive emotions
-           were some of the most prevelant styles it is not a stretch to say 
-           Ted Talks could be serving as a source for people to attempt to 
+           were some of the most prevelant styles it is not a stretch to say
+           Ted Talks could be serving as a source for people to attempt to
            find ways to cope with their stress through inspiration and action."))
 )
 
