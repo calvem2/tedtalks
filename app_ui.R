@@ -14,6 +14,9 @@ intropanel <- tabPanel(
     tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
     tags$p("Date: 6/5/2019"),
     
+    tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
+             height = 360),
+    
     tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
       a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
@@ -38,9 +41,9 @@ intropanel <- tabPanel(
       video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
       any other individual at 9 videos. The most commented video was", em("Richard
                                                                           Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
-    ),
-  tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
-      height = 360)
+    )
+  
+  
   
 )
 
