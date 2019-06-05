@@ -248,7 +248,7 @@ style_main_content <- mainPanel(
          categories for example, negative emotions would include the use of the 
          word sad. Hovering over the bubbles provides examples of words that fit
          into those categories"), 
-  tags$p("First,examining the chart of", strong("all"), "the words we can see 
+  tags$p("First, examining the chart of", strong("all"), "the words we can see 
          that the category focuspresent is the dominant one. This 
          deals with the fact that many Ted Talks provide advice on how to 
          improve your own life and thus the concept of living in the present is 
@@ -266,12 +266,9 @@ style_main_content <- mainPanel(
          This type of data reflects what our culture is concerned with and a 
          reality of that is the intense pressure we are under to succeed in our
          work lives."),
-  tags$p("The many options for word groupings provide multiple incites to be 
-         gathered. The groups examined above had data that stoodout although 
-         there are more hypotheses that could likely be generated from every 
-         grouping. The overall takeaway from this chart is the styles reflect
-         what people are interested in, primarily positive emotions, work and 
-         that society still has patriarchal elements.
+  tags$p("The overall takeaway from this chart is the language styles reflect
+         what people are interested in. Our chart tells us that is  primarily 
+         positive emotions, work and a focus on the present.
          ")
 )
 
