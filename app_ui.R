@@ -105,11 +105,11 @@ overall_main_content <- mainPanel(
   tags$p("The major takeaway from this visualization is that there does appear
          to be a correlation between both the number of languages that a talk has
          been translated into and the duration of the talk with the number of
-         views it recieves. This is not surprising since popular videos likely
+         views it receives. This is not surprising since popular videos likely
          get translated more as they are seen by more people who then wish for
-         others to see it. Additionally the videos with more translations will
-         get seen more as people can access and undestand it from all over the
-         world. The third variable we checked for a relatioship with the number
+         others to see it. Additionally, the videos with more translations will
+         get seen more as people can access and understand it from all over the
+         world. The third variable we checked for a relationship with the number
          of views was the number of speakers. There did not appear to be a
          strong relationship there.")
 )
@@ -118,14 +118,14 @@ overall_main_content <- mainPanel(
 year_main_content <- mainPanel(
   plotlyOutput("metrics_by_year"),
   tags$p("The purpose of the chart was to answer the question of if there is a
-         relationship between the year a ted talk was given and the interations
+         relationship between the year a ted talk was given and the interactions
          it receives with viewers."),
   tags$p("The chart above allows the user to view four different metrics of
          interaction, Views, Duration, Comments and Languages by year. The
          general trend for this chart appears to show that the earlier years
          (roughly before 2012) had what could be broadly stated as more
-         interactions. The videos were recieving more views, being translated
-         into more languages and recieving more comments. The range of these
+         interactions. The videos were receiving more views, being translated
+         into more languages and receiving more comments. The range of these
          metrics by year became smaller with the exception of duration of
          the videos in minutes which appears to have no discernable trend. This
          may lead one to the conclusion that Ted Talks are decreasing in
@@ -180,7 +180,7 @@ lang_met_sidebar_content <- sidebarPanel(
 
 # Create main panel for Plot content
 lang_met_main_content <- mainPanel(
-  plotOutput("lang_metrics"),
+  plotlyOutput("lang_metrics"),
   tags$p("This plot shows the language metrics for two different categories
     of metrics. The first category, Function Words, includes
     personal pronouns ", strong("(ppron),"), " impersonal pronouns ",  strong("(ipron),"), " articles ", strong("(article),"), " prepositions ", strong("(prep),"),
@@ -298,10 +298,10 @@ summarypanel <- tabPanel(
           Talks have become a part of our lives both academically and
           personally. Many of us have viewed Ted Talks in classrooms, for
           assignments and also just for our personal pleasure. Therefore, we
-          wanted to see if we could come to any conclusions about our culture or
-          our generation in addition to simply satisfying a curiosity about what
-          talks people find interesting. The three major takeaways we can draw
-          from the dataset are that"),
+          wanted to see if we could come to any conclusions about today's
+          society by examining the data, in addition to simply satisfying a 
+          curiosity about what talks people find interesting. The three major 
+          takeaways we can draw from the dataset are that"),
     tags$p("(1) There has been a decrease in the number of views Ted Talks are
            recieving on Ted.com"),
     tags$p("(2) Ted Talks on average contain significantly more prepositions and
@@ -320,12 +320,12 @@ summarypanel <- tabPanel(
            language styles by category. The disparity in size of the circles
            clearly represents that a few styles were dominant with positive
            language and work centered language being two significant outliers."),
-    tags$h1("Sucessful Ted Talks"),
+    tags$h1("Successful Ted Talks"),
     tags$p("While viewers tend to interact with videos less than they did before
-           2012, our data supports that there is a positive interation between
+           2012, our data supports that there is a positive interaction between
            the amount of language a video is offered in and the amount of
-           interacions with the video. We also saw that it was most common for
-           videos to have a single speaker and wer shorter than 25 minutes."),
+           interactions with the video. We also saw that it was most common for
+           videos to have a single speaker and were shorter than 25 minutes."),
     tags$h1("Broader Implications"),
     tags$p("The broader implications of our findings are that there in theory
            should be a driving force that is leading people to seek out this 
@@ -333,7 +333,7 @@ summarypanel <- tabPanel(
            or simply that humans are hard wired to seek out things that will
            bring us pleasure, inspiration being one of them. Considering that
            work centered language, focus on the present, and positive emotions
-           were some of the most prevelant styles it is not a stretch to say
+           were some of the most  prevalent styles it is not a stretch to say
            Ted Talks could be serving as a source for people to attempt to
            find ways to cope with their stress through inspiration and action."))
 )
