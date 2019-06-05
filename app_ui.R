@@ -7,55 +7,65 @@ library(ggiraph)
 
 
 ################################################################################
-#Summary Page
+# Summary Page
 intropanel <- tabPanel(
   "Project Overview",
   mainPanel(
     tags$h1("What Makes a Ted Talk Tick?"),
-    tags$p("By: Megan Calverley, Dominik Gorecki, George Prentice, Sarah Trostle"),
+    tags$p("By: Megan Calverley, Dominik Gorecki,
+           George Prentice, Sarah Trostle"),
     tags$p("Date: 6/5/2019"),
 
 
     tags$h2("Overview"),
-    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson's"),
-      "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
-      video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
-      any other individual at 9 videos. The most commented video was", em("Richard
-      Dawkins: Militant atheism"), "receiving", strong("6,404"), "comments.")
-    ),
+    tags$p(
+      "From Ted.com's launch, there have been,", strong("2,550"),
+      "videos posted.", strong("Ken Robinson's"), "video",
+      em("Ken Robinson: Do schools kill creativity?"),
+      "has the most views of any video at", strong("47,227,110"), "views.
+      However,", strong("Hans Rosling"), "has recorded more videos than
+      any other individual at 9 videos. The most commented video was",
+      em("Richard Dawkins: Militant atheism"), "receiving",
+      strong("6,404"), "comments."
+    )
+  ),
 
-    tags$img(src = "./imgs/TED-Talks-1.jpg",width = 742.5,
-             height = 360),
+  tags$img(
+    src = "./imgs/TED-Talks-1.jpg", width = 742.5,
+    height = 360
+  ),
 
-    tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
-      "is downloaded from the website Kaggle, but the data originally came from",
-      a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
-      (which started being published online in 2006) published on TED's website as of", strong("September 21st, 2017."),
-      "It contains data such as: the number of comments, a brief description, duration
-      of the talk, where the event took place, the number of languages the talk is in,
-      the film date, the main speaker's name, the number of speakers, the publishing
-      date, the ratings, the speaker occupation, the number views, and the name of the
-      talk."),
+  tags$p(
+    a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
+    "is downloaded from the website Kaggle, but the data originally came from",
+    a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the
+    TEDTalks (which started being published online in 2006) published on TED's
+    website as of", strong("September 21st, 2017."), "It contains data such as:
+    the number of comments, a brief description, duration of the talk, where the
+    event took place, the number of languages the talk is in, the film date, the
+    main speaker's name, the number of speakers, the publishing date, the
+    ratings, the speaker occupation, the number views, and the name
+    of the talk."
+  ),
 
-    tags$p("Our group is interested in this domain because Ted Talks have become a
-      cultural icon in our time. Ted Talks cover a large range of topics and some are
-      more widely viewed than others. We are curious to explore datasets of Ted Talks
-      to determine if it will reveal information about society or the times we live
-      in. It is also possible that we will not find anything that we can extrapolate
-      to be a reflection of our society but rather will simply learn more about what
-      people find interesting or entertaining and what they do not."),
+  tags$p("Our group is interested in this domain because Ted Talks have become a
+      cultural icon in our time. Ted Talks cover a large range of topics and
+      some are more widely viewed than others. We are curious to explore
+      datasets of Ted Talks to determine if it will reveal information about
+      society or the times we live in. It is also possible that we will not
+      find anything that we can extrapolate to be a reflection of our society
+      but rather will simply learn more about what people find interesting or
+      entertaining and what they do not."),
 
-    tags$h2("General Questions"),
-    tags$p("Which variables had the biggest effect on viewership?"),
-    tags$p("How did viewership vary by year?"),
-    tags$p("Which types of speech were most commonnly used?"),
-    tags$p("Which were the most common word types used?")
-
-
+  tags$h2("General Questions"),
+  tags$p("Which variables had the biggest effect on viewership?"),
+  tags$p("How did viewership vary by year?"),
+  tags$p("Which types of speech were most commonly used?"),
+  tags$p("Which were the most common word types used?")
 )
 
 #######################################################
-#Interactive Page 1 -----------------------------------------------------------
+# Interactive Page 1 -----------------------------------------------------------
 
 # Set choices for continuous varibale to be plotted
 cont_metrics <- list(
@@ -103,15 +113,15 @@ overall_main_content <- mainPanel(
          The user can select from duration of the video, languages it is
          available in, and the number of speakers."),
   tags$p("The major takeaway from this visualization is that there does appear
-         to be a correlation between both the number of languages that a talk has
-         been translated into and the duration of the talk with the number of
-         views it receives. This is not surprising since popular videos likely
-         get translated more as they are seen by more people who then wish for
-         others to see it. Additionally, the videos with more translations will
-         get seen more as people can access and understand it from all over the
-         world. The third variable we checked for a relationship with the number
-         of views was the number of speakers. There did not appear to be a
-         strong relationship there.")
+         to be a correlation between both the number of languages that a talk
+         has been translated into and the duration of the talk with the number
+         of views it receives. This is not surprising since popular videos
+         likely get translated more as they are seen by more people who then
+         wish for others to see it. Additionally, the videos with more
+         translations will get seen more as people can access and understand it
+         from all over the world. The third variable we checked for a
+         relationship with the number of views was the number of speakers.
+         There did not appear to be a strong relationship there.")
 )
 
 # Make main panel for year chart to be displayed
@@ -163,7 +173,7 @@ interactive_panel_one <- tabPanel(
 )
 
 #######################################################
-#Interactive Page 2
+# Interactive Page 2
 metrics_groups <- list(
   "Function Words" = "ppron ipron article prep auxverb adverb conj negate",
   "Grammar Types" = "verb adj compare interrog number quant"
@@ -181,17 +191,23 @@ lang_met_sidebar_content <- sidebarPanel(
 # Create main panel for Plot content
 lang_met_main_content <- mainPanel(
   plotlyOutput("lang_metrics"),
-  tags$p("This plot shows the language metrics for two different categories
+  tags$p(
+    "This plot shows the language metrics for two different categories
     of metrics. The first category, Function Words, includes
-    personal pronouns ", strong("(ppron),"), " impersonal pronouns ",  strong("(ipron),"), " articles ", strong("(article),"), " prepositions ", strong("(prep),"),
-    " auxiliary verbs ", strong("(auxverb),"), " common adverbs ", strong("(adverb),"), " conjunctions ", strong("(conj),"), " and negations ", strong("(negate)."),
-    " The second category, Grammar Types, includes regular verbs", strong("(verb),"),
-    " adjectives ", strong("(adj),"), " comparatives ", strong("(compare),"), " interrogatives ", strong("(interrog),"), " numbers ", strong("(number)"), " and quantifiers ",
-    strong("(quant)."),
-    "Using this data we can better understand the sentence structure in
-    successful Ted Talks. Additionally, this information can help us
-    better understand how information is transferred from individual
-    to another efficiently."),
+    personal pronouns ", strong("(ppron),"), " impersonal pronouns ",
+    strong("(ipron),"), " articles ", strong("(article),"), " prepositions ",
+    strong("(prep),"), " auxiliary verbs ", strong("(auxverb),"),
+    " common adverbs ", strong("(adverb),"), " conjunctions ",
+    strong("(conj),"), " and negations ", strong("(negate)."),
+    " The second category, Grammar Types, includes regular verbs",
+    strong("(verb),"), " adjectives ", strong("(adj),"), " comparatives ",
+    strong("(compare),"), " interrogatives ", strong("(interrog),"),
+    " numbers ", strong("(number)"), " and quantifiers ",
+    strong("(quant)."), "Using this data we can better understand the sentence
+    structure in successful Ted Talks. Additionally, this information can help
+    us better understand how information is transferred from individual
+    to another efficiently."
+  ),
   tags$p("When reviewing the plots we can see that talks contain
     significantly more prepositions and verbs. This is likely
     connected to the purpose of talks. Inspiration and calls
@@ -213,11 +229,14 @@ interactive_panel_two <- tabPanel(
 
 
 #######################################################
-#Interactive Page 3
+# Interactive Page 3
 
 # Set choices for style groups
 style_groups <- list(
-  "All" = "posemo negemo family friend female male insight cause discrep tenat certain differ see hear feel body health sexual ingest affiliation achieve power reward risk focuspast focuspresent focusfuture motion space time work leisure home money relig death swear netspeak assent nonflu filler",
+  "All" = "posemo negemo family friend female male insight cause discrep tenat
+  certain differ see hear feel body health sexual ingest affiliation achieve
+  power reward risk focuspast focuspresent focusfuture motion space time work
+  leisure home money relig death swear netspeak assent nonflu filler",
   "Affect Words" = "posemo negemo",
   "Social Words" = "family friend female male",
   "Cognitive Processes" = "insight cause discrep tenat certain differ",
@@ -289,7 +308,7 @@ interactive_panel_three <- tabPanel(
 
 
 #######################################################
-#Summary Takeways Page
+# Summary Takeways Page
 summarypanel <- tabPanel(
   "Conclusion",
   mainPanel(
@@ -299,11 +318,11 @@ summarypanel <- tabPanel(
           personally. Many of us have viewed Ted Talks in classrooms, for
           assignments and also just for our personal pleasure. Therefore, we
           wanted to see if we could come to any conclusions about today's
-          society by examining the data, in addition to simply satisfying a 
-          curiosity about what talks people find interesting. The three major 
+          society by examining the data, in addition to simply satisfying a
+          curiosity about what talks people find interesting. The three major
           takeaways we can draw from the dataset are that"),
     tags$p("(1) There has been a decrease in the number of views Ted Talks are
-           recieving on Ted.com"),
+           receiving on Ted.com"),
     tags$p("(2) Ted Talks on average contain significantly more prepositions and
             verbs than other word types"),
     tags$p("(3) The most prevalent language styles are what we expected for Ted
@@ -319,7 +338,8 @@ summarypanel <- tabPanel(
            graph, where we used an interactive plot to help represent the
            language styles by category. The disparity in size of the circles
            clearly represents that a few styles were dominant with positive
-           language and work centered language being two significant outliers."),
+           language and work centered language being two significant
+           outliers."),
     tags$h1("Successful Ted Talks"),
     tags$p("While viewers tend to interact with videos less than they did before
            2012, our data supports that there is a positive interaction between
@@ -328,14 +348,15 @@ summarypanel <- tabPanel(
            videos to have a single speaker and were shorter than 25 minutes."),
     tags$h1("Broader Implications"),
     tags$p("The broader implications of our findings are that there in theory
-           should be a driving force that is leading people to seek out this 
+           should be a driving force that is leading people to seek out this
            source of positivity. This could be the stressful lives that we live
            or simply that humans are hard wired to seek out things that will
            bring us pleasure, inspiration being one of them. Considering that
            work centered language, focus on the present, and positive emotions
            were some of the most  prevalent styles it is not a stretch to say
            Ted Talks could be serving as a source for people to attempt to
-           find ways to cope with their stress through inspiration and action."))
+           find ways to cope with their stress through inspiration and action.")
+  )
 )
 
 
@@ -343,7 +364,7 @@ summarypanel <- tabPanel(
 ui <- fluidPage(
   includeCSS("style.css"),
   navbarPage(
-    img(src = "./imgs/logo.png",width = 65.4, height = 30.8),
+    img(src = "./imgs/logo.png", width = 65.4, height = 30.8),
     intropanel,
     interactive_panel_one,
     interactive_panel_two,
