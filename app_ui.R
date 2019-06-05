@@ -124,7 +124,7 @@ year_main_content <- mainPanel(
 # Make first interactive tab
 interactive_panel_one <- tabPanel(
   "Video Popularity",
-  tags$h1("How do users interact with Ted Talk Videos?"),
+  tags$h1("How Do Users Interact with Ted Talk Videos?"),
   tags$hr(),
   # Chart one and widgets
   tags$h2("Viewership Interaction"),
