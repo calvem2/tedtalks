@@ -100,12 +100,25 @@ overall_main_content <- mainPanel(
   tags$p("The purpose of the chart above is to investigate whether there is a 
          relationship between certain variables and viewership of the talks. 
          The user can select from duration of the video, languages it is 
-         available in, and the number of speakers.")
+         available in, and the number of speakers."),
+  tags$p("The major takeaway from this visualization is that there does appear
+         to be a correlation between both the number of languages that a talk has 
+         been translated into and the duration of the talk with the number of 
+         views it recieves. This is not surprising since popular videos likely 
+         get translated more as they are seen by more people who then wish for 
+         others to see it. Additionally the videos with more translations will 
+         get seen more as people can access and undestand it from all over the
+         world. The third variable we checked for a relatioship with the number
+         of views was the number of speakers. There did not appear to be a 
+         strong relationship there.")
 )
 
 # Make main panel for year chart to be displayed
 year_main_content <- mainPanel(
   plotlyOutput("metrics_by_year"),
+  tags$p("The purpose of the chart was to answer the question of if there is a 
+         relationship between the year a ted talk was given and the interations
+         it receives with viewers."),
   tags$p("The chart above allows the user to view four different metrics of 
          interaction, Views, Duration, Comments and Languages by year. The 
          general trend for this chart appears to show that the earlier years
@@ -118,7 +131,15 @@ year_main_content <- mainPanel(
          popularity, however we propose an alternative hypothesis that fits the
          data. The data source for these metrics was Ted.com which likely began
          losing viewers to Youtube as that became a more popular viewing
-         platform. ")
+         platform. "),
+  tags$p("The major takeaway from this chart is that in the earlier years 
+         appear to be more popular for Ted Talks, however, given context of the
+         time period we are aware that the rise of a competitor likely played a
+         part in this. The question that we attempted to answer with this data
+         was whether there was a discernable pattern of interactions over the
+         years. Our conclusion is one that is not specific only to our data
+         rather that it is important to understand outside factors that may be
+         affecting the data.")
 )
 
 # Make first interactive tab
@@ -220,13 +241,15 @@ style_sidebar_content <- sidebarPanel(
 style_main_content <- mainPanel(
   ggiraphOutput("word_style"),
   tags$p("The purpose of this chart is to provide an easy way to compare the
-         style of language being used in the Ted Talks by category. The dataset
-         we used provided a breakdown of the language style into various 
+         style of language being used in the Ted Talks by category. This should 
+         allow us to answer the question of what style of language is being used
+         in Ted Talks and why it might be that certain styles predominate. The 
+         dataset we used provided a breakdown of the language style into various 
          categories for example, negative emotions would include the use of the 
          word sad. Hovering over the bubbles provides examples of words that fit
          into those categories"), 
-  tags$p("First,examining the chart of", strong("all"), "the words we can see 
-         that the category", strong ("focuspresent"), "is the dominant one. This 
+  tags$p("First, examining the chart of", strong("all"), "the words we can see 
+         that the category focuspresent is the dominant one. This 
          deals with the fact that many Ted Talks provide advice on how to 
          improve your own life and thus the concept of living in the present is 
          well represented. The word group", strong("Affect Words"), "is broken 
@@ -243,9 +266,9 @@ style_main_content <- mainPanel(
          This type of data reflects what our culture is concerned with and a 
          reality of that is the intense pressure we are under to succeed in our
          work lives."),
-  tags$p("The many options for word groupings provide multiple incites to be 
-         gathered. The groups examined above had standout data although there
-         are more hypotheses that could likely be generated from every grouping.
+  tags$p("The overall takeaway from this chart is the language styles reflect
+         what people are interested in. Our chart tells us that is  primarily 
+         positive emotions, work and a focus on the present.
          ")
 )
 
@@ -266,29 +289,42 @@ interactive_panel_three <- tabPanel(
 #######################################################
 #Summary Takeways Page
 summarypanel <- tabPanel(
-  "Summary",
+  "Conclusion",
   mainPanel(
-    tags$h1("Summary of Data"),
+    tags$h1("Notable Insights"),
     tags$p("Our purpose for analyzing data on ted talks was multi-faceted. Ted
           Talks have become a part of our lives both academically and 
           personally. Many of us have viewed Ted Talks in classrooms, for 
-          assignments and also just for our personal pleasure. Therefore we 
+          assignments and also just for our personal pleasure. Therefore, we 
           wanted to see if we could come to any conclusions about our culture or
-          our generations lives based in addition to simply satisfying a 
-          curiosity about what talks people find interesting."),
-    
-    tags$p("There were a few observations that we made that we found to be 
-           significant. In our analyzation of the video popularity we concluded
-           that the videos were appearing to decline in popularity but this was 
-           likely misleading due to Youtube providing an alternate platform
-           for viewership. Examination of Language Metrics revealed that verbs
+          our generation in addition to simply satisfying a curiosity about what
+          talks people find interesting. The primary conclusion we can draw from
+          the dataset is than that Ted Talks do appear to be fulfilling a need 
+          for inspiration among people. Delving further into detail we can 
+          see reasons for why people might be seeking sources of inspiration.
+          "),
+    tags$h1("Data to support Insights"),
+    tags$p("Examining the graph of Language Metrics revealed that verbs
            were the most popular form of word used by a long shot. Based on 
            the concept that Ted describes their videos as influential videos
-           we proposed that people view these talks for inspiration. These ted
-           talks are usually informative in nature and advise people how to 
+           we proposed that people view these talks for inspiration. These Ted
+           Talks are usually informative in nature and advise people how to 
            take the right actions to achieve their goals so this seemed 
-           consistent with our expectations. Finally, we broke down the data by 
-           language style, which led us to the conclusion that ......."))
+           consistent with our expectations. Additionally, we broke down the 
+           data by language style and used an interactive plot to help represent
+           the styles by category. The disparity in size of the circles clearly
+           represents that a few styles were dominant with positive language 
+           and work centered language being two significant outliers."),
+    tags$h1("Broader Implications"),
+    tags$p("The broader implications of our findings are that there in theory 
+           should be a driving force that is leading people to seek out this 
+           source of positivity. This could be the stressful lives that we live
+           or simply that humans are hard wired to seek out things that will 
+           bring us pleasure, inspiration being one of them. Considering that
+           work centered language, focus on the present, and positive emotions
+           were some of the most prevelant styles it is not a stretch to say 
+           Ted Talks could be serving as a source for people to attempt to 
+           find ways to cope with their stress through inspiration and action."))
 )
 
 
