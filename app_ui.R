@@ -29,7 +29,7 @@ intropanel <- tabPanel(
     tags$p(a("Our data", href = "https://www.kaggle.com/rounakbanik/ted-talks"),
       "is downloaded from the website Kaggle, but the data originally came from",
       a("Ted.com", href = "https://www.ted.com/talks"), "and looks at all the TEDTalks
-      (which started in 1984) published on TED's website as of", strong("September 21st, 2017."),
+      (which started being published online in 2006) published on TED's website as of", strong("September 21st, 2017."),
       "It contains data such as: the number of comments, a brief description, duration
       of the talk, where the event took place, the number of languages the talk is in,
       the film date, the main speaker's name, the number of speakers, the publishing
@@ -45,9 +45,9 @@ intropanel <- tabPanel(
       people find interesting or entertaining and what they do not."),
   
     tags$h2("General Questions"),
-    tags$p("What variables had the biggest effect on viewership?"),
+    tags$p("Which variables had the biggest effect on viewership?"),
     tags$p("How did viewership vary by year?"),
-    tags$p("Which types of speech were most commonnly used"),
+    tags$p("Which types of speech were most commonnly used?"),
     tags$p("Which were the most common word types used?")
   
   
@@ -292,7 +292,7 @@ summarypanel <- tabPanel(
   "Conclusion",
   mainPanel(
     tags$h1("Notable Insights"),
-    tags$p("Our purpose for analyzing data on ted talks was multi-faceted. Ted
+    tags$p("Our purpose for analyzing data on Ted Talks was multi-faceted. Ted
           Talks have become a part of our lives both academically and 
           personally. Many of us have viewed Ted Talks in classrooms, for 
           assignments and also just for our personal pleasure. Therefore, we 
@@ -303,7 +303,7 @@ summarypanel <- tabPanel(
           for inspiration among people. Delving further into detail we can 
           see reasons for why people might be seeking sources of inspiration.
           "),
-    tags$h1("Data to support Insights"),
+    tags$h1("Data to Support Insights"),
     tags$p("Examining the graph of Language Metrics revealed that verbs
            were the most popular form of word used by a long shot. Based on 
            the concept that Ted describes their videos as influential videos
@@ -315,6 +315,12 @@ summarypanel <- tabPanel(
            the styles by category. The disparity in size of the circles clearly
            represents that a few styles were dominant with positive language 
            and work centered language being two significant outliers."),
+    tags$h1("Sucessful Ted Talks"),
+    tags$p("While vieweres tend to interact with videos less than they did before
+           2012, our data supports that there is a positive interation between
+           the amount of language a video is offered in and the amount of
+           interacions with the video. We also saw that it was most common for
+           videos to have a single speaker and wer shorter than 25 minutes."),
     tags$h1("Broader Implications"),
     tags$p("The broader implications of our findings are that there in theory 
            should be a driving force that is leading people to seek out this 
