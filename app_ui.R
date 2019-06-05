@@ -3,6 +3,7 @@
 
 # Load libraries ---------------------------------------------------------------
 library(plotly)
+library(ggiraph)
 
 
 ################################################################################
@@ -275,7 +276,7 @@ style_main_content <- mainPanel(
 # Make 3rd interactive tab 
 interactive_panel_three <- tabPanel(
   "Language Style",
-  tags$h1("What kind of language is used in TED Talks?"),
+  tags$h1("What Kind of Language is Used in TED Talks?"),
   tags$hr(),
   sidebarLayout(
     style_sidebar_content,
