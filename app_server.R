@@ -122,13 +122,14 @@ server <- function(input, output) {
   colnames(ted_main)[colnames(ted_main)=="views"] <- "Views"
   
   
-  output$viewership_chart <- renderPlot({
-    v <- ggplot(ted_main) + 
-      geom_point(aes_string(x = input$viewership_variable, y = "Views"),alpha = 0.2) +
+  output$viewership_chart <- renderPlotly({
+    v <- ggplot(ted_main) +
+      geom_point(aes_string(x = input$viewership_variable, y = "Views", 
+                            text="paste(\"Total Views: \", Views, \"\n\", paste0(input$viewership_variable, \":\"), ted_main[, input$viewership_variable])"), alpha = 0.2) +
       labs(title = paste(input$viewership_variable, "vs. Viewership"))+
       xlab(input$viewership_variable) +
       ylab("Number of Views")
-    v
+    ggplotly(v, tooltip = "text")
   })
   # Render plotly chart of distribution of views, comments, etc., by year
   output$metrics_by_year <- renderPlotly({

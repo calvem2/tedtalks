@@ -97,7 +97,7 @@ year_sidebar_content <- sidebarPanel(
 
 # Make main panel for overall chart to be displayed
 overall_main_content <- mainPanel(
-  plotOutput("viewership_chart"),
+  plotlyOutput("viewership_chart"),
   tags$p("The purpose of the chart above is to investigate whether there is a
          relationship between certain variables and viewership of the talks.
          The user can select from duration of the video, languages it is
