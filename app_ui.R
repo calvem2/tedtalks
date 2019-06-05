@@ -16,7 +16,7 @@ intropanel <- tabPanel(
     
     
     tags$h2("Overview"),
-    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson’s"),
+    tags$p("From Ted.com's launch, there have been,", strong("2,550"), "videos posted.", strong("Ken Robinson's"),
       "video", em("Ken Robinson: Do schools kill creativity?"), "has the most views of any
       video at", strong("47,227,110"), "views. However,", strong("Hans Rosling"), "has recorded more videos than
       any other individual at 9 videos. The most commented video was", em("Richard
@@ -182,11 +182,12 @@ lang_met_main_content <- mainPanel(
   plotOutput("lang_metrics"),
   tags$p("This plot shows the language metrics for two different categories
     of metrics. The first category, Function Words, includes
-    personal pronouns, impersonal pronouns, articles, prepositions,
-    auxiliary verbs, common adverbs, conjunctions and negations. 
-    The second category, Grammar Types, includes regular verbs,
-    adjectives, comparatives, interrogatives, numbers and quantifiers.
-    Using this data we can better understand the sentence structure in 
+    personal pronouns ", strong("(ppron),"), " impersonal pronouns ",  strong("(ipron),"), " articles ", strong("(article),"), " prepositions ", strong("(prep),"),
+    " auxiliary verbs ", strong("(auxverb),"), " common adverbs ", strong("(adverb),"), " conjunctions ", strong("(conj),"), " and negations ", strong("(negate)."), 
+    " The second category, Grammar Types, includes regular verbs", strong("(verb),"),
+    " adjectives ", strong("(adj),"), " comparatives ", strong("(compare),"), " interrogatives ", strong("(interrog),"), " numbers ", strong("(number)"), " and quantifiers ",
+    strong("(quant)."),
+    "Using this data we can better understand the sentence structure in 
     successful Ted Talks. Additionally, this information can help us
     better understand how information is transferred from individual
     to another efficiently."),
@@ -315,7 +316,7 @@ summarypanel <- tabPanel(
            the styles by category. The disparity in size of the circles clearly
            represents that a few styles were dominant with positive language 
            and work centered language being two significant outliers."),
-    tags$h1("Sucessful Ted Talks"),
+    tags$h1("Successful Ted Talks"),
     tags$p("While vieweres tend to interact with videos less than they did before
            2012, our data supports that there is a positive interation between
            the amount of language a video is offered in and the amount of
