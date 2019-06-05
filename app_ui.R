@@ -180,7 +180,7 @@ lang_met_sidebar_content <- sidebarPanel(
 
 # Create main panel for Plot content
 lang_met_main_content <- mainPanel(
-  plotOutput("lang_metrics"),
+  plotlyOutput("lang_metrics"),
   tags$p("This plot shows the language metrics for two different categories
     of metrics. The first category, Function Words, includes
     personal pronouns ", strong("(ppron),"), " impersonal pronouns ",  strong("(ipron),"), " articles ", strong("(article),"), " prepositions ", strong("(prep),"),

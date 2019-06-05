@@ -148,15 +148,15 @@ server <- function(input, output) {
   })
   
   # INTERACTIVE PAGE TWO PLOT(S)
-  output$lang_metrics <- renderPlot({
+  output$lang_metrics <- renderPlotly({
     current_met <- ted_word_metrics %>%
       filter(is.element(type_met, unlist(strsplit(input$language_metrics, " " )))) %>%
       group_by(type_met) %>%
       summarise(total_words = sum(met_word_count, na.rm = TRUE))
       
     
-    ggplot(current_met) +
-      geom_col(aes(x = type_met, y = total_words)) + 
+   plot <- ggplot(current_met) +
+      geom_col(aes(x = type_met, y = total_words, text = paste0("Total Words: ", current_met$total_words))) + 
       labs(title = "Frequency of Different Language Metrics") +
       xlab("Metric Type") +
       ylab("Total Words") +
@@ -164,6 +164,7 @@ server <- function(input, output) {
         breaks = pretty(current_met$total_words),
         labels = comma
       )
+    ggplotly(plot, tooltip = "text")
   })
   
   # INTERACTIVE PAGE THREE PLOT(S)
